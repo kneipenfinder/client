@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/19.10.2014_2313_KneipenFinder.iml" filepath="$PROJECT_DIR$/19.10.2014_2313_KneipenFinder.iml" />
       <module fileurl="file://$PROJECT_DIR$/23.10.2014_2313_KneipenFinder.iml" filepath="$PROJECT_DIR$/23.10.2014_2313_KneipenFinder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KneipenFinder.iml" filepath="$PROJECT_DIR$/KneipenFinder.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
