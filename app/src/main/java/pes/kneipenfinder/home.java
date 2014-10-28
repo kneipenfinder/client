@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -67,10 +68,15 @@ public class home extends Activity {
                 //TODO: Fehler handeln
                 System.out.println("GPS fehler location nicht gefunden oder so");
             }else{
-                System.out.println("Kneipen anzeigen");
+                JSONArray locations = json.getJSONArray("locations");
+                for(int i = 0; i < locations.length(); i++){
+                    JSONObject location = locations.getJSONObject(i);
+                    System.out.println(location.getString("name"));
+                }
             }
 
         }catch(Exception e){
+            
         }
 
     }
