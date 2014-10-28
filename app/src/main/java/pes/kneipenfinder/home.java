@@ -17,6 +17,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Properties;
 
 
 public class home extends Activity {
@@ -24,6 +25,7 @@ public class home extends Activity {
     private serverCommunication serverCom;
     private String serverURL = "http://futurebot.de";
     private location location;
+    private Properties prop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
