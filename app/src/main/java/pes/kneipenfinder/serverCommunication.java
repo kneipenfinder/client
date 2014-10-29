@@ -87,12 +87,11 @@ public class serverCommunication {
             sessionID = json.getString("sessionID");
             String p = json.getString("p");
             String g = json.getString("g");
-            Integer secretRandom = generateRandomNumber(json.getInt("p"));
 
+            BigInteger secretRandomBI = generateRandomNumber(p);
             String serverPublicKey = json.getString("serverPublicKey");
             BigInteger gBI = new BigInteger(g);
             BigInteger pBI = new BigInteger(p);
-            BigInteger secretRandomBI = BigInteger.valueOf(secretRandom.intValue());
             BigInteger serverPublicKeyBI = new BigInteger(serverPublicKey);
 
             BigInteger publicKeyBI = gBI.modPow(secretRandomBI, pBI);
@@ -106,6 +105,7 @@ public class serverCommunication {
             json = new JSONObject(res);
             String handshakeStatus = json.getString("handshakeStatus");
             return(handshakeStatus.equals("OK"));
+
         }catch(Exception e){
             return false;
         }
@@ -124,11 +124,15 @@ public class serverCommunication {
         return result;
     }
 
-    // Erzeuge eine zufällige Zahl, die zwischen 1 und p-1 liegt
-    public Integer generateRandomNumber(Integer p){
-        Integer number;
-        Random rand = new Random();
-        number = rand.nextInt(((p-1) - 1) + 1) + 1;
+    // Erzeuge eine zufällige Zahl, die zwischen 0 und (2 ^ BITS in p) -1
+    // Endlosschleife möglich, allerdings Wahrscheinlichkeit derart gering => Erstmal zu vernachlässigen
+    public BigInteger generateRandomNumber(String pString){
+        BigInteger p = new BigInteger(pString);
+        BigInteger number;
+        Random rnd = new Random();
+        do {
+            number = new BigInteger(p.bitLength(), rnd);
+        } while (number.compareTo(p) >= 0);
         return number;
     }
 
