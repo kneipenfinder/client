@@ -27,13 +27,22 @@ public class AppProperties {
     }
 
     // Einzelne Properties holen
+    // Wenn User-Property nicht gefunden wurde, wird automatisch die Default-Property verwendet
     public String getProperties(String key) throws FileNotFoundException {
-        String property = prop.getProperty(key);
-        return property;
+        String userKey = "u_" + key;
+        String defaultKey = "d_" + key;
+        if(prop.getProperty(userKey) != null) {
+            String property = prop.getProperty(userKey);
+            return property;
+        }else{
+            String property = prop.getProperty(defaultKey);
+            return property;
+        }
     }
 
-    // Einzelne Properties setzen
+    // Einzelne User-Properties setzen --> Default-Properties werden nie ueberschrieben
     public void setProperties(String key, String value){
-        prop.setProperty(key, value);
+        String userKey = "u_" + key;
+        prop.setProperty(userKey, value);
     }
 }

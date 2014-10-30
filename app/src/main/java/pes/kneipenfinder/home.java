@@ -79,6 +79,17 @@ public class home extends Activity {
             
         }
 
+        AppProperties prop = new AppProperties();
+        try {
+            prop.getProperties("radius");
+            System.out.println(prop.toString());
+            prop.setProperties("radius", "30000");
+            prop.getProperties("radius");
+            System.out.println(prop.toString());
+        }catch (Exception e){
+
+        }
+
     }
 
     @Override
