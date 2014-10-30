@@ -14,9 +14,12 @@ import java.net.URL;
  * Version: 1
  */
 public class asyncHttpRequest extends AsyncTask<String, String, String> {
+
+
     public asyncHttpRequest(String serverURL, String parameters) {
         String response = doInBackground(serverURL,parameters);
     }
+
 
     // Methode für Request. Diese wird im Hintergrund ausgeführt
     protected String doInBackground(String... urls) {;

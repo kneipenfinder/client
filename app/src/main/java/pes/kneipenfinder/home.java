@@ -8,6 +8,10 @@ import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -47,8 +51,8 @@ public class home extends Activity {
         }
     }
 
+    private void findLocation(){
 
-    public void button_findLocation(View v){
 
         Double Lat = location.getLatitude();
         Double Long = location.getLongitude();
@@ -71,16 +75,44 @@ public class home extends Activity {
                 //TODO: Fehler handeln
                 System.out.println("GPS fehler location nicht gefunden oder so");
             }else{
+
+                setContentView(R.layout.activity_find);
+                final TableLayout tableLayout = (TableLayout) findViewById(R.id.find_table);
+
                 JSONArray locations = json.getJSONArray("locations");
                 for(int i = 0; i < locations.length(); i++){
+
                     JSONObject location = locations.getJSONObject(i);
-                    System.out.println(location.getString("name"));
+
+                    final TableRow tableRow = new TableRow(this);
+                    tableRow.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
+
+                    final TextView text = new TextView(this);
+                    text.setText(location.getString("name"));
+                    text.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+                    tableRow.addView(text);
+
+                    final TextView text2 = new TextView(this);
+                    text2.setText(location.getString("distance"));
+                    text2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+                    tableRow.addView(text2);
+
+
+                    tableLayout.addView(tableRow);
+
                 }
+
             }
 
         }catch(Exception e){
-            
+
         }
+
+    }
+
+    public void button_findLocation(View v){
+
+        findLocation();
 
     }
 
@@ -93,12 +125,21 @@ public class home extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch(id) {
+            case R.id.action_home:
+
+                System.out.println("home");
+                setContentView(R.layout.activity_home);
+                break;
+
+            case R.id.action_find:
+
+                System.out.println("find");
+                findLocation();
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

@@ -14,12 +14,12 @@ public class location implements LocationListener {
 
     public double getLongitude(){
         //return longitude;
-        return 51.674967;
+        return 6.941239;
     }
 
     public double getLatitude(){
        // return latitude;
-        return 6.941239;
+        return 51.674967;
     }
 
     @Override
