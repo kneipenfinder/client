@@ -2,6 +2,7 @@ package pes.kneipenfinder;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -31,8 +32,7 @@ public class home extends Activity {
     private serverCommunication serverCom;
     private String serverURL = "http://futurebot.de";
     private location location;
-    private Context con = this;
-    private AppProperties prop = new AppProperties(con);
+    private AppProperties prop;
 
 
     @Override
@@ -43,6 +43,17 @@ public class home extends Activity {
         // Starte bei App Start die Kommunikation mit dem Server
         serverCom = new serverCommunication(serverURL);
         location = new location();
+
+        AssetManager assetManager = getAssets();
+        prop = new AppProperties(assetManager);
+
+        /**TESTAUSGABE ANFANG*/
+
+        String test = prop.getProp("radius");
+        System.out.println("radius: " + test);
+
+        /**TESTAUSGABE ENDE*/
+
 
         if(!serverCom.initiateHandshake()) {
             //TODO: Fehler handeln
