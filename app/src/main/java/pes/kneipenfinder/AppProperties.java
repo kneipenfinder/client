@@ -1,10 +1,14 @@
 package pes.kneipenfinder;
 
-import android.util.Property;
+import android.content.Context;
+import android.content.res.AssetManager;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Properties;
 
 /**
@@ -14,29 +18,34 @@ public class AppProperties {
 
     Properties prop = new Properties();
     String propFile = "app.properties";
+    Context context;
 
     // Im Konstruktor direkt alle Properties auslesen
-    public AppProperties(){
+    public AppProperties(Context con){
         try {
-            BufferedInputStream stream = new BufferedInputStream(new FileInputStream(propFile));
+            context = con;
+            AssetManager manager = context.getAssets();
+            InputStream stream = manager.open(propFile);
             prop.load(stream);
             stream.close();
         }catch (Exception e){
-            System.out.println("Fehler beim Holen der Properties");
+            System.out.println(e);
         }
     }
 
     // Einzelne Properties holen
     // Wenn User-Property nicht gefunden wurde, wird automatisch die Default-Property verwendet
-    public String getProperties(String key) throws FileNotFoundException {
+    public String getProperties(String key){
         String userKey = "u_" + key;
         String defaultKey = "d_" + key;
-        if(prop.getProperty(userKey) != null) {
+        if(prop.getProperty(userKey) != null || prop.getProperty(userKey) != "") {
             String property = prop.getProperty(userKey);
             return property;
-        }else{
+        }else if(prop.getProperty(defaultKey) != null || prop.getProperty(defaultKey) != ""){
             String property = prop.getProperty(defaultKey);
             return property;
+        }else{
+            return "Property nicht gefunden";
         }
     }
 

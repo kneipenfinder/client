@@ -1,6 +1,7 @@
 package pes.kneipenfinder;
 
 import android.app.Activity;
+import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -26,7 +27,9 @@ public class home extends Activity {
     private serverCommunication serverCom;
     private String serverURL = "http://futurebot.de";
     private location location;
-    private Properties prop;
+    private Context con = this;
+    private AppProperties prop = new AppProperties(con);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,17 +80,6 @@ public class home extends Activity {
 
         }catch(Exception e){
             
-        }
-
-        AppProperties prop = new AppProperties();
-        try {
-            prop.getProperties("radius");
-            System.out.println(prop.toString());
-            prop.setProperties("radius", "30000");
-            prop.getProperties("radius");
-            System.out.println(prop.toString());
-        }catch (Exception e){
-
         }
 
     }
