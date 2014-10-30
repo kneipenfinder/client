@@ -21,21 +21,21 @@ public class AppProperties {
     Context context;
 
     // Im Konstruktor direkt alle Properties auslesen
-    public AppProperties(Context con){
+    public AppProperties(AssetManager assetManager){
+
         try {
-            context = con;
-            AssetManager manager = context.getAssets();
-            InputStream stream = manager.open(propFile);
+            InputStream stream = assetManager.open("app.properties");
             prop.load(stream);
             stream.close();
-        }catch (Exception e){
-            System.out.println(e);
+        }catch(Exception e){
+            System.out.println("error: "+e.toString());
         }
+
     }
 
     // Einzelne Properties holen
     // Wenn User-Property nicht gefunden wurde, wird automatisch die Default-Property verwendet
-    public String getProperties(String key){
+    public String getProp(String key){
         String userKey = "u_" + key;
         String defaultKey = "d_" + key;
         if(prop.getProperty(userKey) != null || prop.getProperty(userKey) != "") {
@@ -50,7 +50,7 @@ public class AppProperties {
     }
 
     // Einzelne User-Properties setzen --> Default-Properties werden nie ueberschrieben
-    public void setProperties(String key, String value){
+    public void setProp(String key, String value){
         String userKey = "u_" + key;
         prop.setProperty(userKey, value);
     }
