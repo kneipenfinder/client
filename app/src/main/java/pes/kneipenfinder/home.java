@@ -51,6 +51,8 @@ public class home extends Activity {
 
         String test = prop.getProp("radius");
         System.out.println("radius: " + test);
+        prop.setProp("radius",  "30000");
+        System.out.println(prop.getProp("radius"));
 
         /**TESTAUSGABE ENDE*/
 
