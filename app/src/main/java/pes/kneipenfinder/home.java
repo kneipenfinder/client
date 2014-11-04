@@ -44,15 +44,18 @@ public class home extends Activity {
         serverCom = new serverCommunication(serverURL);
         location = new location();
 
-        AssetManager assetManager = getAssets();
-        prop = new AppProperties(assetManager);
-
         /**TESTAUSGABE ANFANG*/
+        // Erzeuge beim Start ein Properties Objekt
+        prop = new AppProperties();
+        // Wenn noch kein Properties-File existiert, erstelle eins mit den default Werten
+        if(prop.getProp("radius", this) == "") {
+            prop.initializePref(this);
+        }
 
-        String test = prop.getProp("radius");
+        String test = prop.getProp("radius", this);
         System.out.println("radius: " + test);
-        prop.setProp("radius",  "30000");
-        System.out.println(prop.getProp("radius"));
+        prop.setProp("radius",  "30000", this);
+        System.out.println(prop.getProp("radius", this));
 
         /**TESTAUSGABE ENDE*/
 

@@ -1,63 +1,43 @@
 package pes.kneipenfinder;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.preference.PreferenceManager;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.Properties;
 
 /**
  * Created by pes on 28.10.2014.
  */
 public class AppProperties {
 
-    Properties prop = new Properties();
-    String propFile = "app.properties";
-
-    // Im Konstruktor direkt alle Properties auslesen
-    public AppProperties(AssetManager assetManager){
-
-        try {
-            InputStream stream = assetManager.open(propFile);
-            prop.load(stream);
-            stream.close();
-        }catch(Exception e){
-            System.out.println("error: "+e.toString());
-        }
-
-    }
-
     // Einzelne Properties holen
     // Wenn User-Property nicht gefunden wurde, wird automatisch die Default-Property verwendet
-    public String getProp(String key){
-        String userKey = "u_" + key;
-        String defaultKey = "d_" + key;
-        if(prop.getProperty(userKey).length() != 0) {
-            String property = prop.getProperty(userKey);
-            return property;
-        }else if(prop.getProperty(defaultKey).length() != 0){
-            String property = prop.getProperty(defaultKey);
-            return property;
+    public String getProp(String key, Context context){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String name = preferences.getString(key,"");
+        if(!name.equalsIgnoreCase(""))
+        {
+            return name;
         }else{
-            return "Property nicht gefunden";
+            return "";
         }
     }
 
-    // Einzelne User-Properties setzen --> Default-Properties werden nie ueberschrieben
-    public void setProp(String key, String value){
-        String userKey = "u_" + key;
-        prop.setProperty(userKey, value);
-        try {
-            FileOutputStream out = new FileOutputStream(propFile);
-            prop.store(out, null);
-        }catch (Exception e){
-            System.out.println(e.toString());
-        }
+    // Einzelne User-Properties setzen
+    public void setProp(String key, String value, Context context){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(key,value);
+        editor.apply();
+    }
+
+    // Properties mit Default-Werten initialisieren
+    // Bei Zuruecksetzen auf Default Einstellungen wird diese Methode wieder aufgerufen
+    public void initializePref(Context context){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("radius", "20000");
+        editor.apply();
     }
 }
