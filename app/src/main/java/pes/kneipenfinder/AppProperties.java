@@ -7,7 +7,7 @@ import android.preference.PreferenceManager;
 
 
 /**
- * Created by pes on 28.10.2014.
+ * Created by Peter on 28.10.2014.
  */
 public class AppProperties {
 
@@ -37,6 +37,7 @@ public class AppProperties {
     public void initializePref(Context context){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("appinit", "appinit");
         editor.putString("radius", "20000");
         editor.apply();
     }

@@ -1,30 +1,16 @@
 package pes.kneipenfinder;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.location.Location;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.Properties;
 
 
 public class home extends Activity {
@@ -43,15 +29,14 @@ public class home extends Activity {
         // Starte bei App Start die Kommunikation mit dem Server
         serverCom = new serverCommunication(serverURL);
         location = new location();
-
-        /**TESTAUSGABE ANFANG*/
         // Erzeuge beim Start ein Properties Objekt
         prop = new AppProperties();
         // Wenn noch kein Properties-File existiert, erstelle eins mit den default Werten
-        if(prop.getProp("radius", this) == "") {
+        if(prop.getProp("appinit", this) == "") {
             prop.initializePref(this);
         }
 
+        /* Testausgabe */
         String test = prop.getProp("radius", this);
         System.out.println("radius: " + test);
         prop.setProp("radius",  "30000", this);
