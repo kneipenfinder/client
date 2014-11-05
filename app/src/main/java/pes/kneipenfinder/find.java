@@ -63,13 +63,13 @@ public class find extends Activity {
 
 
                     final TextView text = new TextView(this);
-                    if(i != 1) {
+                    //if(i != 1) {
                         text.setText(Html.fromHtml("<h5>" + location.getString("name").trim() + "</h5>" + "<br />" + location.getString("street").trim()));
                         text.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-                    }else{
-                        text.setText("Name und Straße");
-                        text.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-                    }
+                    //}else{
+                      //  text.setText("Name und Straße");
+                      //  text.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+                    //}
                     text.setPadding(1,1,1,1);
                     text.setTextSize(15);
                     text.setTextColor(Color.WHITE);
@@ -78,19 +78,34 @@ public class find extends Activity {
                     tableRow.addView(text);
 
                     final TextView text2 = new TextView(this);
-                    if(i != 1) {
+                    //if(i != 1) {
                         text2.setText(Html.fromHtml("<h4>" + location.getString("distance").trim() + "\n" + "<br />" + "km" + "</h4>"));
                         text2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-                    }else{
-                        text2.setText("Entfernung");
-                        text2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-                    }
+                    //}else{
+                     //   text2.setText("Entfernung");
+                     //   text2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+                    //}
                     text2.setPadding(1,1,1,1);
                     text2.setTextSize(15);
                     text2.setTextColor(Color.WHITE);
                     text2.setGravity(Gravity.LEFT);
                     text2.setBackground(getResources().getDrawable(R.drawable.find_table));
                     tableRow.addView(text2);
+
+                    final TextView text3 = new TextView(this);
+                  //  if(i != 1) {
+                        text3.setText(Html.fromHtml("<h4>" + location.getString("orientation").trim()));
+                        text3.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+                   // }else{
+                    //    text3.setText("Richtung");
+                       // text3.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+                  //  }
+                    text3.setPadding(1,1,1,1);
+                    text3.setTextSize(15);
+                    text3.setTextColor(Color.WHITE);
+                    text3.setGravity(Gravity.LEFT);
+                    text3.setBackground(getResources().getDrawable(R.drawable.find_table));
+                    tableRow.addView(text3);
 
 
                     tableLayout.addView(tableRow);
