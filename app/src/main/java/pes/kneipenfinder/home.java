@@ -1,6 +1,7 @@
 package pes.kneipenfinder;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,10 +16,11 @@ import org.json.JSONObject;
 
 public class home extends Activity {
 
-    private serverCommunication serverCom;
+    public static serverCommunication serverCom;
     private String serverURL = "http://futurebot.de";
     private location location;
     private AppProperties prop;
+    private Intent i;
 
 
     @Override
@@ -36,15 +38,6 @@ public class home extends Activity {
             prop.initializePref(this);
         }
 
-        /* Testausgabe */
-        String test = prop.getProp("radius", this);
-        System.out.println("radius: " + test);
-        prop.setProp("radius",  "30000", this);
-        System.out.println(prop.getProp("radius", this));
-
-        /**TESTAUSGABE ENDE*/
-
-
         if(!serverCom.initiateHandshake()) {
             //TODO: Fehler handeln
         }else{
@@ -52,69 +45,9 @@ public class home extends Activity {
         }
     }
 
-    private void findLocation(){
-
-
-        Double Lat = location.getLatitude();
-        Double Long = location.getLongitude();
-
-        JSONObject json = new JSONObject();
-        try {
-            json.put("action", "find");
-            json.put("lat", location.getLatitude());
-            json.put("long", location.getLongitude());
-        }catch(Exception e){
-
-        }
-
-        String respond = serverCom.secureCom(json.toString());
-        try {
-
-            json = new JSONObject(respond);
-            Boolean status = json.getBoolean("status");
-            if(!status){
-                //TODO: Fehler handeln
-                System.out.println("GPS fehler location nicht gefunden oder so");
-            }else{
-
-                setContentView(R.layout.activity_find);
-                final TableLayout tableLayout = (TableLayout) findViewById(R.id.find_table);
-
-                JSONArray locations = json.getJSONArray("locations");
-                for(int i = 0; i < locations.length(); i++){
-
-                    JSONObject location = locations.getJSONObject(i);
-
-                    final TableRow tableRow = new TableRow(this);
-                    tableRow.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
-
-                    final TextView text = new TextView(this);
-                    text.setText(location.getString("name"));
-                    text.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-                    tableRow.addView(text);
-
-                    final TextView text2 = new TextView(this);
-                    text2.setText(location.getString("distance"));
-                    text2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-                    tableRow.addView(text2);
-
-
-                    tableLayout.addView(tableRow);
-
-                }
-
-            }
-
-        }catch(Exception e){
-
-        }
-
-    }
-
     public void button_findLocation(View v){
-
-        findLocation();
-
+        i = new Intent(getApplicationContext(), find.class);
+        startActivity(i);
     }
 
     @Override
@@ -130,15 +63,14 @@ public class home extends Activity {
         int id = item.getItemId();
         switch(id) {
             case R.id.action_home:
-
-                System.out.println("home");
+                // Home
                 setContentView(R.layout.activity_home);
                 break;
 
-            case R.id.action_find:
-
-                System.out.println("find");
-                findLocation();
+            case R.id.action_settings:
+                // Einstellungen
+                i = new Intent(getApplicationContext(), settings.class);
+                startActivity(i);
                 break;
 
         }

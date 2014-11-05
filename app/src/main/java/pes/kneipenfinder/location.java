@@ -12,12 +12,12 @@ public class location implements LocationListener {
     public static double latitude;
     public static double longitude;
 
-    public double getLongitude(){
+    public static double getLongitude(){
         //return longitude;
         return 6.941239;
     }
 
-    public double getLatitude(){
+    public static double getLatitude(){
        // return latitude;
         return 51.674967;
     }
