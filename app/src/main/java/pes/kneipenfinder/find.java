@@ -1,7 +1,10 @@
 package pes.kneipenfinder;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Html;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TableLayout;
@@ -58,14 +61,35 @@ public class find extends Activity {
                     final TableRow tableRow = new TableRow(this);
                     tableRow.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
+
                     final TextView text = new TextView(this);
-                    text.setText(location.getString("name"));
-                    text.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+                    if(i != 1) {
+                        text.setText(Html.fromHtml("<h5>" + location.getString("name").trim() + "</h5>" + "<br />" + location.getString("street").trim()));
+                        text.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+                    }else{
+                        text.setText("Name und Straße");
+                        text.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+                    }
+                    text.setPadding(1,1,1,1);
+                    text.setTextSize(15);
+                    text.setTextColor(Color.WHITE);
+                    text.setGravity(Gravity.LEFT);
+                    text.setBackground(getResources().getDrawable(R.drawable.find_table));
                     tableRow.addView(text);
 
                     final TextView text2 = new TextView(this);
-                    text2.setText(location.getString("distance"));
-                    text2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+                    if(i != 1) {
+                        text2.setText(Html.fromHtml("<h4>" + location.getString("distance").trim() + "\n" + "<br />" + "km" + "</h4>"));
+                        text2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+                    }else{
+                        text2.setText("Entfernung");
+                        text2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+                    }
+                    text2.setPadding(1,1,1,1);
+                    text2.setTextSize(15);
+                    text2.setTextColor(Color.WHITE);
+                    text2.setGravity(Gravity.LEFT);
+                    text2.setBackground(getResources().getDrawable(R.drawable.find_table));
                     tableRow.addView(text2);
 
 
