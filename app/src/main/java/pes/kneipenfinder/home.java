@@ -19,7 +19,7 @@ public class home extends Activity {
     public static serverCommunication serverCom;
     private String serverURL = "http://futurebot.de";
     private location location;
-    private AppProperties prop;
+    public static AppProperties prop;
     private Intent i;
 
 
