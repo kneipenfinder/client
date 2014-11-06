@@ -6,6 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_settings">Einstellungen</string>
     <string name="title_activity_find">Umkreissuche</string>
-    <string name="tv_label">Radius eingeben</string>
+    <string name="tv_label_radius">Radius eingeben</string>
+    <string name="tv_label_results">Anzahl der gewünschten Ergebnisse eingeben</string>
 
 </resources>

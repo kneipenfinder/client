@@ -39,6 +39,7 @@ public class AppProperties {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("appinit", "appinit");
         editor.putString("radius", "20000");
+        editor.putString("result", "10");
         editor.apply();
     }
 }

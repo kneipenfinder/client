@@ -16,8 +16,8 @@ import pes.kneipenfinder.R;
 
 public class settings extends Activity {
 
-    private Button rButton;
-    private EditText rEdit;
+    private EditText radEdit;
+    private EditText resEdit;
     final Context context = this;
 
     @Override
@@ -25,11 +25,11 @@ public class settings extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        rButton = (Button) findViewById(R.id.radius);
-        rEdit = (EditText) findViewById(R.id.editTextRadius);
-        rEdit.setText(home.prop.getProp("radius", context));
+        radEdit = (EditText) findViewById(R.id.editTextRadius);
+        radEdit.setText(home.prop.getProp("radius", context));
 
-        rButton.setOnClickListener(new View.OnClickListener() {
+
+        radEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // hole das Alert Layout
@@ -49,8 +49,50 @@ public class settings extends Activity {
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Hole den User Input und schreibe ihn ins Textfeld
-                                rEdit.setText(input.getText());
+                                radEdit.setText(input.getText());
                                 home.prop.setProp("radius", input.getText().toString(), context);
+                            }
+                        })
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,	int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                // Erstelle einen Alert Dialog
+                AlertDialog alertD = alertDialogBuilder.create();
+
+                alertD.show();
+            }
+        });
+
+        resEdit = (EditText) findViewById(R.id.editTextResults);
+        resEdit.setText(home.prop.getProp("results", context));
+
+
+        resEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // hole das Alert Layout
+                LayoutInflater layoutInflater = LayoutInflater.from(context);
+
+                View promptView = layoutInflater.inflate(R.layout.alert_results, null);
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                alertDialogBuilder.setView(promptView);
+
+                final EditText input = (EditText) promptView.findViewById(R.id.userInput);
+
+                // Erstelle das Fenster
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Hole den User Input und schreibe ihn ins Textfeld
+                                resEdit.setText(input.getText());
+                                home.prop.setProp("result", input.getText().toString(), context);
                             }
                         })
                         .setNegativeButton("Cancel",

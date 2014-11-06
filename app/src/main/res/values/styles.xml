@@ -26,4 +26,11 @@
         <item name="android:clickable">false</item>
     </style>
 
+    <style name="textStyle">
+        <item name="android:textColor">#fff88202</item>
+        <item name="android:background">#ff3d3d3d</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
