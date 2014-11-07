@@ -68,7 +68,7 @@ public class settings extends Activity {
         });
 
         resEdit = (EditText) findViewById(R.id.editTextResults);
-        resEdit.setText(home.prop.getProp("results", context));
+        resEdit.setText(home.prop.getProp("result", context));
 
 
         resEdit.setOnClickListener(new View.OnClickListener() {
