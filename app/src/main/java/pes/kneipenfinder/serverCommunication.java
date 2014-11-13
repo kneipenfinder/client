@@ -1,6 +1,7 @@
 package pes.kneipenfinder;
 
 import android.app.ExpandableListActivity;
+import android.content.Context;
 import android.util.Base64;
 import android.util.Base64DataException;
 
@@ -32,9 +33,11 @@ public class serverCommunication {
     byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, };
     IvParameterSpec spec = new IvParameterSpec(iv);
     private JSONObject json;
+    Context context;
 
     // Konstruktor
-    public serverCommunication(String server){
+    public serverCommunication(String server, Context context){
+        this.context = context;
         serverURL = server;
     }
 
@@ -115,7 +118,7 @@ public class serverCommunication {
     // Dies ist notwendig, da Kommunikationen nicht im Main-Task stattfinden dürfen
     public String httpRequest(String parameters){
         String result="";
-        asyncHttpRequest task = new asyncHttpRequest(serverURL,parameters);
+        asyncHttpRequest task = new asyncHttpRequest(serverURL,parameters, context);
         try{
             result = task.execute(serverURL,parameters).get();
         }catch (Exception e){

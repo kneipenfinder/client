@@ -27,6 +27,8 @@ public class settings extends Activity {
 
         radEdit = (EditText) findViewById(R.id.editTextRadius);
         radEdit.setText(home.prop.getProp("radius", context));
+        radEdit.setFocusable(false);
+        radEdit.setClickable(true);
 
 
         radEdit.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +71,8 @@ public class settings extends Activity {
 
         resEdit = (EditText) findViewById(R.id.editTextResults);
         resEdit.setText(home.prop.getProp("result", context));
+        resEdit.setFocusable(false);
+        resEdit.setClickable(true);
 
 
         resEdit.setOnClickListener(new View.OnClickListener() {

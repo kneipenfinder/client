@@ -1,6 +1,7 @@
 package pes.kneipenfinder;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,15 +22,16 @@ public class home extends Activity {
     private location location;
     public static AppProperties prop;
     private Intent i;
-
+    public Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        context = this;
         // Starte bei App Start die Kommunikation mit dem Server
-        serverCom = new serverCommunication(serverURL);
+        serverCom = new serverCommunication(serverURL, context);
         location = new location();
         // Erzeuge beim Start ein Properties Objekt
         prop = new AppProperties();

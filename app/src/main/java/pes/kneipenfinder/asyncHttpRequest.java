@@ -1,5 +1,8 @@
 package pes.kneipenfinder;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -15,9 +18,19 @@ import java.net.URL;
  */
 public class asyncHttpRequest extends AsyncTask<String, String, String> {
 
+    private Context context;
+    ProgressDialog mDialog;
 
-    public asyncHttpRequest(String serverURL, String parameters) {
+    public asyncHttpRequest(String serverURL, String parameters, Context context) {
+        this.context = context;
         String response = doInBackground(serverURL,parameters);
+    }
+
+    protected void onPreExecute(){
+        mDialog = new ProgressDialog(context);
+        mDialog.setMessage("Ergebnisse werden geladen...");
+        mDialog.setCancelable(false);
+        mDialog.show();
     }
 
 
@@ -53,5 +66,10 @@ public class asyncHttpRequest extends AsyncTask<String, String, String> {
         } catch (Exception e) {
             return (e.toString());
         }
+    }
+
+    @Override
+    protected void onPostExecute(String result){
+        mDialog.dismiss();
     }
 }
