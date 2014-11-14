@@ -23,6 +23,7 @@ public class home extends Activity {
     public static AppProperties prop;
     private Intent i;
     public Context context;
+    private errorHandling eHandling;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class home extends Activity {
         }
 
         if(!serverCom.initiateHandshake()) {
-            //TODO: Fehler handeln
+            eHandling = new errorHandling(context, "Es ist ein unerwarteter Fehler aufgetreten", "Handshake");
         }else{
             System.out.println("Handshake ok");
         }

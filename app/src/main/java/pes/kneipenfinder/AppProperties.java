@@ -11,7 +11,7 @@ import android.preference.PreferenceManager;
  */
 public class AppProperties {
 
-    public errorHandling handling;
+    public errorHandling eHandling;
 
     // Einzelne Properties holen
     // Wenn User-Property nicht gefunden wurde, wird automatisch die Default-Property verwendet
@@ -33,7 +33,7 @@ public class AppProperties {
                 setPropInFile(key,value, context);
                 return true;
             }else {
-                handling = new errorHandling(context,"Es wurde keine gültige Zahl eingegeben");
+                eHandling = new errorHandling(context,"Es wurde keine gültige Zahl eingegeben", "");
                 return false;
             }
         }else if (key == "result"){
@@ -41,7 +41,7 @@ public class AppProperties {
                 setPropInFile(key, value, context);
                 return true;
             }else {
-                handling = new errorHandling(context, "Es wurde keine gültige Zahl eingegeben");
+                eHandling = new errorHandling(context, "Es wurde keine gültige Zahl eingegeben", "");
                 return false;
             }
         }else{
