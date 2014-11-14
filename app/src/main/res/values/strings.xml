@@ -9,5 +9,6 @@
     <string name="tv_label_radius">Radius eingeben</string>
     <string name="tv_label_results">Anzahl der gewünschten Ergebnisse eingeben</string>
     <string name="title_activity_error_handing">errorHanding</string>
+    <string name="title_activity_add">add</string>
 
 </resources>

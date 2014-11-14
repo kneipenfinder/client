@@ -28,6 +28,10 @@
             android:name=".errorHanding"
             android:label="@string/title_activity_error_handing" >
         </activity>
+        <activity
+            android:name=".add"
+            android:label="@string/title_activity_add" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

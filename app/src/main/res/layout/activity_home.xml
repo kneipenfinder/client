@@ -14,7 +14,8 @@
             android:text="Hinzufügen"
             android:id="@+id/add"
             android:layout_weight=".50"
-            android:layout_width="0dp"/>
+            android:layout_width="0dp"
+            android:onClick="button_addLocation" />
 
         <Button
             style="@style/buttonStyle"

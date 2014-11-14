@@ -53,6 +53,11 @@ public class home extends Activity {
         startActivity(i);
     }
 
+    public void button_addLocation(View v){
+        i = new Intent(getApplicationContext(), add.class);
+        startActivity(i);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
