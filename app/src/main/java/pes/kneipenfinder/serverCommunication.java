@@ -34,6 +34,7 @@ public class serverCommunication {
     IvParameterSpec spec = new IvParameterSpec(iv);
     private JSONObject json;
     Context context;
+    private errorHandling eHandling;
 
     // Konstruktor
     public serverCommunication(String server, Context context){
@@ -154,7 +155,7 @@ public class serverCommunication {
             SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
             return secretKey;
         }catch(Exception e){
-            // TODO: Fehler handeln
+            eHandling = new errorHandling(context,"Es ist ein unerwarteter Fehler aufgetreten", "Schlüssel");
             System.out.println("Beim Erstellen des Schluesselobjekts ist ein Fehler aufgetreten: " + e.toString());
             return null;
         }
@@ -172,7 +173,7 @@ public class serverCommunication {
             return encryptedText;
 
         }catch (Exception e){
-            // TODO: Fehler handeln
+            eHandling = new errorHandling(context, "Es ist ein unerwarteter Fehler aufgetreten", "Verschlüsseln");
             System.out.println("Beim Verschluesseln der Nachricht ist ein Fehler aufgetreten: " + e.toString());
             return null;
         }
@@ -189,7 +190,7 @@ public class serverCommunication {
             String decyptedMessage = new String(cipherData);
             return decyptedMessage;
         }catch(Exception e){
-            // TODO: Fehler handeln
+            eHandling = new errorHandling(context, "Es ist ein unerwarteter Fehler aufgetreten", "Entschlüsseln");
             System.out.println("Beim Entschluesseln der Nachricht ist ein Fehler aufgetreten: " + e.toString());
             return e.toString();
         }

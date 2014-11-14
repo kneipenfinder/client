@@ -24,6 +24,12 @@ public class errorHandling {
             return "1111";
         }else if (errorSource == ""){
             return "";
+        }else if(errorSource == "Schlüssel"){
+            return "2222";
+        }else if(errorSource == "Verschlüsseln"){
+            return  "3333";
+        }else if(errorSource == "Entschlüsseln"){
+            return "4444";
         }
         else{
             return "6666";
