@@ -26,6 +26,7 @@ public class asyncHttpRequest extends AsyncTask<String, String, String> {
         String response = doInBackground(serverURL,parameters);
     }
 
+    @Override
     protected void onPreExecute(){
         mDialog = new ProgressDialog(context);
         mDialog.setMessage("Ergebnisse werden geladen...");

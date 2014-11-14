@@ -37,7 +37,7 @@ public class AppProperties {
                 return false;
             }
         }else if (key == "result"){
-            if(isInteger(key)){
+            if(isInteger(value)){
                 setPropInFile(key, value, context);
                 return true;
             }else {
