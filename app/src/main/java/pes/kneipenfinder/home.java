@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class home extends Activity {
 
     public static serverCommunication serverCom;
-    private String serverURL = "http://futurebot.de/api/";
+    private String serverURL = "http://futurebot.de/css/";
     private location location;
     public static AppProperties prop;
     private Intent i;
