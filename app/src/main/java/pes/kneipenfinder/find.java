@@ -1,6 +1,7 @@
 package pes.kneipenfinder;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
@@ -18,16 +19,19 @@ import pes.kneipenfinder.R;
 
 public class find extends Activity {
 
+    private errorHandling eHandling;
+    Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find);
-        findLocation();
+        findLocation(this);
     }
 
-    private void findLocation(){
+    private void findLocation(Context context){
 
-
+        this.context = context;
         Double Lat = location.getLatitude();
         Double Long = location.getLongitude();
 
@@ -46,8 +50,7 @@ public class find extends Activity {
             json = new JSONObject(respond);
             Boolean status = json.getBoolean("status");
             if(!status){
-                //TODO: Fehler handeln
-                System.out.println("GPS fehler location nicht gefunden oder so");
+                eHandling = new errorHandling(context, "Es ist ein unerwarteter Fehler aufgetreten", "GPS");
             }else{
 
                 setContentView(R.layout.activity_find);

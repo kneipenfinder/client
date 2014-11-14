@@ -30,6 +30,8 @@ public class errorHandling {
             return  "3333";
         }else if(errorSource == "Entschlüsseln"){
             return "4444";
+        }else if(errorSource == "GPS"){
+            return "5555";
         }
         else{
             return "6666";

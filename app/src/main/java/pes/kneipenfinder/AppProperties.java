@@ -29,7 +29,7 @@ public class AppProperties {
     // Einzelne User-Properties setzen
     public boolean setProp(String key, String value, Context context){
         if (key == "radius"){
-            if(isInteger(key)){
+            if(isInteger(value)){
                 setPropInFile(key,value, context);
                 return true;
             }else {
