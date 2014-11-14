@@ -24,6 +24,10 @@
             android:name=".find"
             android:label="@string/title_activity_find" >
         </activity>
+        <activity
+            android:name=".errorHanding"
+            android:label="@string/title_activity_error_handing" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

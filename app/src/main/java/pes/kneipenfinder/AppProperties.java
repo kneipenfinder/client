@@ -11,6 +11,8 @@ import android.preference.PreferenceManager;
  */
 public class AppProperties {
 
+    public errorHandling handling;
+
     // Einzelne Properties holen
     // Wenn User-Property nicht gefunden wurde, wird automatisch die Default-Property verwendet
     public String getProp(String key, Context context){
@@ -31,8 +33,7 @@ public class AppProperties {
                 setPropInFile(key,value, context);
                 return true;
             }else {
-                // TODO: Fehler ausgeben, dass keine Zahl eingegeben wurde
-                System.out.println("Fehler bei Eingabe der Einstellungen");
+                handling = new errorHandling(context,"Es wurde keine gültige Zahl eingegeben");
                 return false;
             }
         }else if (key == "result"){
@@ -40,8 +41,7 @@ public class AppProperties {
                 setPropInFile(key, value, context);
                 return true;
             }else {
-                // TODO: Fehler ausgeben, dass keine gültige Zahl eingegeben wurde
-                System.out.println("Fehler bei Eingabe der Einstellungen");
+                handling = new errorHandling(context, "Es wurde keine gültige Zahl eingegeben");
                 return false;
             }
         }else{
