@@ -25,7 +25,33 @@ public class AppProperties {
     }
 
     // Einzelne User-Properties setzen
-    public void setProp(String key, String value, Context context){
+    public boolean setProp(String key, String value, Context context){
+        if (key == "radius"){
+            if(isInteger(key)){
+                setPropInFile(key,value, context);
+                return true;
+            }else {
+                // TODO: Fehler ausgeben, dass keine Zahl eingegeben wurde
+                System.out.println("Fehler bei Eingabe der Einstellungen");
+                return false;
+            }
+        }else if (key == "result"){
+            if(isInteger(key)){
+                setPropInFile(key, value, context);
+                return true;
+            }else {
+                // TODO: Fehler ausgeben, dass keine gültige Zahl eingegeben wurde
+                System.out.println("Fehler bei Eingabe der Einstellungen");
+                return false;
+            }
+        }else{
+            setPropInFile(key,value,context);
+            return true;
+        }
+    }
+
+    // Hier die Properties setzen
+    public void setPropInFile(String key, String value, Context context){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(key,value);
@@ -41,5 +67,15 @@ public class AppProperties {
         editor.putString("radius", "20000");
         editor.putString("result", "10");
         editor.apply();
+    }
+
+    // Pruefe, ob wirklich nur Zahlen eingegeben wurden
+    public static boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch(NumberFormatException e) {
+            return false;
+        }
+        return true;
     }
 }

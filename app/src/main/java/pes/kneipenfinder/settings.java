@@ -51,8 +51,10 @@ public class settings extends Activity {
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Hole den User Input und schreibe ihn ins Textfeld
-                                radEdit.setText(input.getText());
-                                home.prop.setProp("radius", input.getText().toString(), context);
+                                boolean success = home.prop.setProp("radius", input.getText().toString(), context);
+                                if(success){
+                                    radEdit.setText(input.getText());
+                                }
                             }
                         })
                         .setNegativeButton("Cancel",
@@ -95,8 +97,10 @@ public class settings extends Activity {
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Hole den User Input und schreibe ihn ins Textfeld
-                                resEdit.setText(input.getText());
-                                home.prop.setProp("result", input.getText().toString(), context);
+                                boolean success = home.prop.setProp("result", input.getText().toString(), context);
+                                if(success){
+                                    resEdit.setText(input.getText());
+                                }
                             }
                         })
                         .setNegativeButton("Cancel",
