@@ -2,6 +2,7 @@ package pes.kneipenfinder;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
@@ -21,6 +22,7 @@ public class find extends Activity {
 
     private errorHandling eHandling;
     Context context;
+    private Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,12 +135,19 @@ public class find extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch(id) {
+            case R.id.action_home:
+                // Home
+                setContentView(R.layout.activity_home);
+                break;
+
+            case R.id.action_settings:
+                // Einstellungen
+                i = new Intent(getApplicationContext(), settings.class);
+                startActivity(i);
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
