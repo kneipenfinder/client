@@ -9,12 +9,12 @@ import android.content.DialogInterface;
  */
 public class errorHandling {
     // Konstruktor
-    public errorHandling(Context context, String message, String errorSource){
+    public errorHandling(Context context,String title, String message, String errorSource){
         String errorCode = getErrorCode(errorSource);
         if(errorCode == ""){
-            userError(context,message);
+                userError(context,title,message);
         }else{
-            unexpectedError(context,message,errorCode);
+            unexpectedError(context, title,message,errorCode);
         }
     }
 
@@ -39,8 +39,12 @@ public class errorHandling {
     }
 
     // Benutzerbedingter Fehler
-    public void userError(Context context, String message){
+    public void userError(Context context,String title, String message){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        if(!title.isEmpty()){
+            builder1.setTitle(title);
+        }
+        builder1.setTitle("Eingaben nicht korrekt");
         builder1.setMessage("Es ist ein Fehler aufgetreten: " + message);
         builder1.setCancelable(true);
         builder1.setPositiveButton("OK",
@@ -55,8 +59,11 @@ public class errorHandling {
     }
 
     // Unerwarteter Fehler
-    public void unexpectedError(Context context, String message, String errorcode){
+    public void unexpectedError(Context context,String title, String message, String errorcode){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        if(!title.isEmpty()){
+            builder1.setTitle(title);
+        }
         builder1.setMessage("Es ist ein Fehler aufgetreten: " + message + " ( " + errorcode + " ) ");
         builder1.setCancelable(true);
         builder1.setPositiveButton("OK",

@@ -12,6 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import org.json.JSONObject;
+import org.xml.sax.ErrorHandler;
+
 
 public class add extends Activity {
 
@@ -21,6 +24,7 @@ public class add extends Activity {
     private EditText place;
     final Context context = this;
     private Intent i;
+    private errorHandling eHandling;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,7 +207,21 @@ public class add extends Activity {
         postcode = (EditText) findViewById(R.id.addPostcode);
         place = (EditText) findViewById(R.id.addplace);
         if(checkForm()){
-            // TODO: Json Object erstellen mit den Daten der Kneipe und an Server senden
+            JSONObject json = new JSONObject();
+            try {
+                json.put("action", "add");
+                json.put("lat", location.getLatitude());
+                json.put("long", location.getLongitude());
+                json.put("name", name.getText().toString());
+                json.put("street", street.getText().toString());
+                json.put("postcode", postcode.getText().toString());
+                json.put("place", place.getText().toString());
+            }catch(Exception e){
+
+            }
+
+            String respond = home.serverCom.secureCom(json.toString());
+            System.out.println(respond);
         }
     }
 
@@ -214,7 +232,7 @@ public class add extends Activity {
     private boolean checkName() {
         String sName = name.getText().toString();
         if(sName.isEmpty()){
-            allertForm("Name wurde nicht eingegeben.");
+            eHandling = new errorHandling(context,"Eingaben nicht korrekt", "Name wurde nicht eingegeben.","");
             return false;
         }
         return true;
@@ -223,7 +241,7 @@ public class add extends Activity {
     private boolean checkStreet() {
         String sStreet = street.getText().toString();
         if(sStreet.isEmpty()){
-            allertForm("Straße wurde nicht eingegeben.");
+            eHandling = new errorHandling(context,"Eingaben nicht korrekt", "Straße wurde nicht eingegeben.","");
         }
         return true;
     }
@@ -231,7 +249,7 @@ public class add extends Activity {
     private boolean checkPostcode() {
         String sPostcode = postcode.getText().toString();
         if(sPostcode.isEmpty()){
-            allertForm("Postleitzahl wurde nicht angegeben.");
+            eHandling = new errorHandling(context,"Eingaben nicht korrekt", "Postleitzahl wurde nicht eingegeben.","");
             return false;
         }
         return true;
@@ -240,27 +258,10 @@ public class add extends Activity {
     private boolean checkPlace() {
         String sPostcode = place.getText().toString();
         if(sPostcode.isEmpty()){
-            allertForm("Ort wurde nicht angegeben.");
+            eHandling = new errorHandling(context,"Eingaben nicht korrekt" ,"Ort wurde nicht eingegeben.","");
             return false;
         }
         return true;
-    }
-
-    // Form, die aufgerufen wird, falls eine falsche Eingabe getätigt wurde
-    public void allertForm(String message){
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setTitle("Eingaben nicht korrekt");
-        builder1.setMessage(message);
-        builder1.setCancelable(true);
-        builder1.setNeutralButton(android.R.string.ok,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
     }
 
     @Override

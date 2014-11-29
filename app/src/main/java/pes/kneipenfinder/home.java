@@ -42,7 +42,7 @@ public class home extends Activity {
         }
 
         if(!serverCom.initiateHandshake()) {
-            eHandling = new errorHandling(context, "Es ist ein unerwarteter Fehler aufgetreten", "Handshake");
+            eHandling = new errorHandling(context,"", "Es ist ein unerwarteter Fehler aufgetreten", "Handshake");
         }else{
             System.out.println("Handshake ok");
         }

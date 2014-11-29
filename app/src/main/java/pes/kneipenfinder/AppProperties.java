@@ -33,7 +33,7 @@ public class AppProperties {
                 setPropInFile(key,value, context);
                 return true;
             }else {
-                eHandling = new errorHandling(context,"Es wurde keine gültige Zahl eingegeben", "");
+                eHandling = new errorHandling(context,"Eingaben nicht korrekt","Es wurde keine gültige Zahl eingegeben", "");
                 return false;
             }
         }else if (key == "result"){
@@ -41,7 +41,7 @@ public class AppProperties {
                 setPropInFile(key, value, context);
                 return true;
             }else {
-                eHandling = new errorHandling(context, "Es wurde keine gültige Zahl eingegeben", "");
+                eHandling = new errorHandling(context,"Eingaben nicht korrekt", "Es wurde keine gültige Zahl eingegeben", "");
                 return false;
             }
         }else{

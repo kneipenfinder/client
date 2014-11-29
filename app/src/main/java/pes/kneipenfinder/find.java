@@ -52,7 +52,7 @@ public class find extends Activity {
             json = new JSONObject(respond);
             Boolean status = json.getBoolean("status");
             if(!status){
-                eHandling = new errorHandling(context, "Es ist ein unerwarteter Fehler aufgetreten", "GPS");
+                eHandling = new errorHandling(context,"", "Es ist ein unerwarteter Fehler aufgetreten", "GPS");
             }else{
 
                 setContentView(R.layout.activity_find);

@@ -155,7 +155,7 @@ public class serverCommunication {
             SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
             return secretKey;
         }catch(Exception e){
-            eHandling = new errorHandling(context,"Es ist ein unerwarteter Fehler aufgetreten", "Schlüssel");
+            eHandling = new errorHandling(context,"","Es ist ein unerwarteter Fehler aufgetreten", "Schlüssel");
             System.out.println("Beim Erstellen des Schluesselobjekts ist ein Fehler aufgetreten: " + e.toString());
             return null;
         }
@@ -173,7 +173,7 @@ public class serverCommunication {
             return encryptedText;
 
         }catch (Exception e){
-            eHandling = new errorHandling(context, "Es ist ein unerwarteter Fehler aufgetreten", "Verschlüsseln");
+            eHandling = new errorHandling(context,"", "Es ist ein unerwarteter Fehler aufgetreten", "Verschlüsseln");
             System.out.println("Beim Verschluesseln der Nachricht ist ein Fehler aufgetreten: " + e.toString());
             return null;
         }
@@ -190,7 +190,7 @@ public class serverCommunication {
             String decyptedMessage = new String(cipherData);
             return decyptedMessage;
         }catch(Exception e){
-            eHandling = new errorHandling(context, "Es ist ein unerwarteter Fehler aufgetreten", "Entschlüsseln");
+            eHandling = new errorHandling(context,"", "Es ist ein unerwarteter Fehler aufgetreten", "Entschlüsseln");
             System.out.println("Beim Entschluesseln der Nachricht ist ein Fehler aufgetreten: " + e.toString());
             return e.toString();
         }
