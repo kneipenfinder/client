@@ -18,6 +18,7 @@ public class add extends Activity {
     private EditText name;
     private EditText street;
     private EditText postcode;
+    private EditText place;
     final Context context = this;
 
     @Override
@@ -33,6 +34,10 @@ public class add extends Activity {
         postcode = (EditText) findViewById(R.id.addPostcode);
         postcode.setFocusable(false);
         postcode.setClickable(true);
+        place = (EditText) findViewById(R.id.addplace);
+        place.setFocusable(false);
+        place.setClickable(true);
+
 
         // On Click Listener für den Namen der Location
         name.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +152,44 @@ public class add extends Activity {
                 alertD.show();
             }
         });
+
+        // On Click Listener für die Ort der Location
+        place.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // hole das Alert Layout
+                LayoutInflater layoutInflater = LayoutInflater.from(context);
+
+                View promptView = layoutInflater.inflate(R.layout.alert_place, null);
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                alertDialogBuilder.setView(promptView);
+
+                final EditText input = (EditText) promptView.findViewById(R.id.userInput);
+
+                // Erstelle das Fenster
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Hole den User Input und schreibe ihn ins Textfeld
+                                place.setText(input.getText());
+                            }
+                        })
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,	int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                // Erstelle einen Alert Dialog
+                AlertDialog alertD = alertDialogBuilder.create();
+
+                alertD.show();
+            }
+        });
     }
 
     public void button_submitLocation(View v){
@@ -157,13 +200,14 @@ public class add extends Activity {
         name = (EditText) findViewById(R.id.addName);
         street = (EditText) findViewById(R.id.addStreet);
         postcode = (EditText) findViewById(R.id.addPostcode);
+        place = (EditText) findViewById(R.id.addplace);
         if(checkForm()){
             // TODO: Json Object erstellen mit den Daten der Kneipe und an Server senden
         }
     }
 
     private boolean checkForm(){
-        return (checkName() && checkStreet() && checkPostcode());
+        return (checkName() && checkStreet() && checkPostcode() && checkPlace());
     }
 
     private boolean checkName() {
@@ -187,6 +231,15 @@ public class add extends Activity {
         String sPostcode = postcode.getText().toString();
         if(sPostcode.isEmpty()){
             allertForm("Postleitzahl wurde nicht angegeben.");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean checkPlace() {
+        String sPostcode = place.getText().toString();
+        if(sPostcode.isEmpty()){
+            allertForm("Ort wurde nicht angegeben.");
             return false;
         }
         return true;

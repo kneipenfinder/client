@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/addName"
             android:layout_column="2"
-            android:hint="Name" />
+            android:hint="Name eingeben" />
 
     </TableRow>
 
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/addStreet"
             android:layout_column="2"
-            android:hint="Straße" />
+            android:hint="Straße eingeben" />
     </TableRow>
 
     <TableRow
@@ -61,7 +61,27 @@
             android:layout_height="wrap_content"
             android:id="@+id/addPostcode"
             android:layout_column="2"
-            android:hint="Postleitzahl" />
+            android:hint="Postleitzahl eingeben" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/tableRow2">
+
+        <TextView
+            style="@style/textStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ort:"
+            android:id="@+id/textView5" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addplace"
+            android:layout_column="2"
+            android:hint="Ort eingeben" />
     </TableRow>
 
     <Button
