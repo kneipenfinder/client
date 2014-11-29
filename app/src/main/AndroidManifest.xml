@@ -32,6 +32,10 @@
             android:name=".add"
             android:label="@string/title_activity_add" >
         </activity>
+        <activity
+            android:name=".rate"
+            android:label="@string/title_activity_rate" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

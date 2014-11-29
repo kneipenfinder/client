@@ -13,5 +13,6 @@
     <string name="tv_label_postcode">Postleitzahl der Location eingeben</string>
     <string name="title_activity_error_handing">errorHanding</string>
     <string name="title_activity_add">add</string>
+    <string name="title_activity_rate">rate</string>
 
 </resources>
