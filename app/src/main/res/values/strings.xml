@@ -18,5 +18,6 @@
     <string name="add_headline">Location hinzufügen</string>
     <string name="rate_stars_headline">Bewertung</string>
     <string name="rate_comment_headline">Kommentar</string>
+    <string name="title_activity_search">search</string>
 
 </resources>
