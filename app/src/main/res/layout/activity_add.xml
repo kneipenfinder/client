@@ -4,6 +4,19 @@
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <TextView
+        style="@style/textStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/add_headline"
+        android:id="@+id/textView4" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/location_spinner" />
+
     <TableRow
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
@@ -88,7 +101,7 @@
         style="@style/buttonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Hinzufügen"
         android:id="@+id/add"
         android:onClick="button_submitLocation" />
 

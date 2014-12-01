@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import org.json.JSONObject;
 import org.xml.sax.ErrorHandler;
@@ -25,11 +27,28 @@ public class add extends Activity {
     final Context context = this;
     private Intent i;
     private errorHandling eHandling;
+    private String array_spinner[];
+    private Spinner type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+
+        // Setze die Spinner Optionen
+        // TODO: Spinner Optionen aus der Datenbanktabelle holen
+        array_spinner=new String[5];
+        array_spinner[0]="Kneipe";
+        array_spinner[1]="Disco";
+        array_spinner[2]="Bar";
+        array_spinner[3]="option 4";
+        array_spinner[4]="option 5";
+        Spinner s = (Spinner) findViewById(R.id.location_spinner);
+        ArrayAdapter adapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, array_spinner);
+        s.setAdapter(adapter);
+
+        // Hole alle Edit Felder und setze die Einstellungen
         name = (EditText) findViewById(R.id.addName);
         name.setFocusable(false);
         name.setClickable(true);
@@ -206,12 +225,15 @@ public class add extends Activity {
         street = (EditText) findViewById(R.id.addStreet);
         postcode = (EditText) findViewById(R.id.addPostcode);
         place = (EditText) findViewById(R.id.addplace);
+        type = (Spinner) findViewById(R.id.location_spinner);
+
         if(checkForm()){
             JSONObject json = new JSONObject();
             try {
                 json.put("action", "add");
                 json.put("lat", location.getLatitude());
                 json.put("long", location.getLongitude());
+                json.put("type", type.getSelectedItem());
                 json.put("name", name.getText().toString());
                 json.put("street", street.getText().toString());
                 json.put("postcode", postcode.getText().toString());

@@ -15,5 +15,8 @@
     <string name="title_activity_error_handing">errorHanding</string>
     <string name="title_activity_add">add</string>
     <string name="title_activity_rate">rate</string>
+    <string name="add_headline">Location hinzufügen</string>
+    <string name="rate_stars_headline">Bewertung</string>
+    <string name="rate_comment_headline">Kommentar</string>
 
 </resources>
