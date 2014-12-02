@@ -220,7 +220,7 @@ public class add extends Activity {
         addLocation();
     }
 
-    private void addLocation(){
+    private boolean addLocation(){
         name = (EditText) findViewById(R.id.addName);
         street = (EditText) findViewById(R.id.addStreet);
         postcode = (EditText) findViewById(R.id.addPostcode);
@@ -237,13 +237,17 @@ public class add extends Activity {
                 json.put("name", name.getText().toString());
                 json.put("street", street.getText().toString());
                 json.put("postcode", postcode.getText().toString());
-                json.put("place", place.getText().toString());
+
+                String respond = home.serverCom.secureCom(json.toString());
+                json = new JSONObject(respond);
+                System.out.println(respond);
+                boolean addStatus = json.getBoolean("addStatus");
+                return addStatus;
             }catch(Exception e){
-
+                return false;
             }
-
-            String respond = home.serverCom.secureCom(json.toString());
-            System.out.println(respond);
+        }else{
+            return false;
         }
     }
 
