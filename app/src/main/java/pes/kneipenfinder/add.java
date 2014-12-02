@@ -27,6 +27,7 @@ public class add extends Activity {
     final Context context = this;
     private Intent i;
     private errorHandling eHandling;
+    private messageDialog mDialog;
     private String array_spinner[];
     private Spinner type;
 
@@ -39,7 +40,7 @@ public class add extends Activity {
         // TODO: Spinner Optionen aus der Datenbanktabelle holen
         array_spinner=new String[5];
         array_spinner[0]="Kneipe";
-        array_spinner[1]="Disco";
+        array_spinner[1]="Diskothek";
         array_spinner[2]="Bar";
         array_spinner[3]="option 4";
         array_spinner[4]="option 5";
@@ -146,7 +147,7 @@ public class add extends Activity {
                 // hole das Alert Layout
                 LayoutInflater layoutInflater = LayoutInflater.from(context);
 
-                View promptView = layoutInflater.inflate(R.layout.alert_street, null);
+                View promptView = layoutInflater.inflate(R.layout.alert_postcode, null);
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
@@ -217,7 +218,12 @@ public class add extends Activity {
     }
 
     public void button_submitLocation(View v){
-        addLocation();
+        boolean addStatus = addLocation();
+        if(addStatus){
+            mDialog = new messageDialog(context, "Kneipe hinzugefügt", "Die Kneipe"+" "+name.getText()+" "+"wurde hinzugefügt und wartet nun auf Freigabe durch einen Administrator");
+        }else{
+            eHandling = new errorHandling(context, "" , "Die angegebene Kneipe konnte nicht eingetragen werden.", "");
+        }
     }
 
     private boolean addLocation(){
@@ -233,15 +239,14 @@ public class add extends Activity {
                 json.put("action", "add");
                 json.put("lat", location.getLatitude());
                 json.put("long", location.getLongitude());
-                json.put("type", type.getSelectedItem());
+                System.out.println(type.getSelectedItem());
                 json.put("name", name.getText().toString());
                 json.put("street", street.getText().toString());
                 json.put("postcode", postcode.getText().toString());
 
                 String respond = home.serverCom.secureCom(json.toString());
                 json = new JSONObject(respond);
-                System.out.println(respond);
-                boolean addStatus = json.getBoolean("addStatus");
+                boolean addStatus = json.getBoolean("status");
                 return addStatus;
             }catch(Exception e){
                 return false;
