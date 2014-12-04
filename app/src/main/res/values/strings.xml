@@ -19,5 +19,6 @@
     <string name="rate_stars_headline">Bewertung</string>
     <string name="rate_comment_headline">Kommentar</string>
     <string name="title_activity_search">search</string>
+    <string name="search_headline">Location suchen</string>
 
 </resources>

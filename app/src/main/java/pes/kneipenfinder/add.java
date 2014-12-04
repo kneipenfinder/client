@@ -239,7 +239,7 @@ public class add extends Activity {
                 json.put("action", "add");
                 json.put("lat", location.getLatitude());
                 json.put("long", location.getLongitude());
-                System.out.println(type.getSelectedItem());
+                System.out.println(type.getSelectedItem().toString());
                 json.put("name", name.getText().toString());
                 json.put("street", street.getText().toString());
                 json.put("postcode", postcode.getText().toString());
