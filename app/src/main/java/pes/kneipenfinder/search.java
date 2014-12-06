@@ -49,10 +49,10 @@ public class search extends Activity {
         array_spinner[2]="Diskothek";
         array_spinner[3]="Bar";
         array_spinner[4]="option 4";
-        Spinner s = (Spinner) findViewById(R.id.location_spinner);
+        type = (Spinner) findViewById(R.id.location_spinner);
         ArrayAdapter adapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, array_spinner);
-        s.setAdapter(adapter);
+        type.setAdapter(adapter);
 
         // Hole alle Edit Felder und setze die Einstellungen
         name = (EditText) findViewById(R.id.searchName);
@@ -233,16 +233,17 @@ public class search extends Activity {
                 json.put("action", "search");
                 json.put("lat", location.getLatitude());
                 json.put("long", location.getLongitude());
-                System.out.println(type.getSelectedItem().toString());
+                json.put("type", type.getSelectedItem().toString());
                 json.put("name", name.getText().toString());
                 json.put("street", street.getText().toString());
                 json.put("postcode", postcode.getText().toString());
 
                 String respond = home.serverCom.secureCom(json.toString());
                 json = new JSONObject(respond);
-                System.out.println(json);
+                displayResults results = new displayResults(respond, "Ergebnisse Suche", context);
+
             }catch(Exception e){
-                System.out.println(e.toString());
+                // TODO Fehlerbehandlung
             }
         }else{
             mDialog = new messageDialog(context,"Eingaben unvollständig", "Es muss mindestens ein Suchkriterium angegeben sein");
@@ -267,6 +268,7 @@ public class search extends Activity {
         String sStreet = street.getText().toString();
         if(sStreet.isEmpty()){
             return false;
+
         }
         return true;
     }

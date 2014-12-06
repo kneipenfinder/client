@@ -40,6 +40,10 @@
             android:name=".search"
             android:label="@string/title_activity_search" >
         </activity>
+        <activity
+            android:name=".displayResults"
+            android:label="@string/title_activity_display_results" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
