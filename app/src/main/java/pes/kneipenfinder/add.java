@@ -37,13 +37,14 @@ public class add extends Activity {
         setContentView(R.layout.activity_add);
 
         // Setze die Spinner Optionen
-        // TODO: Spinner Optionen aus der Datenbanktabelle holen
         array_spinner=new String[5];
-        array_spinner[0]="Kneipe";
-        array_spinner[1]="Diskothek";
-        array_spinner[2]="Bar";
-        array_spinner[3]="option 4";
-        array_spinner[4]="option 5";
+        // Spinner Items aufbauen
+        try {
+            getSpinnerItems items = new getSpinnerItems(false);
+            array_spinner = items.buildItems(false);
+        }catch (Exception e){
+            //TODO Fehlerhandling
+        }
         Spinner s = (Spinner) findViewById(R.id.location_spinner);
         ArrayAdapter adapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, array_spinner);

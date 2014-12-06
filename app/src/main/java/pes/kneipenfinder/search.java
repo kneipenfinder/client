@@ -42,13 +42,14 @@ public class search extends Activity {
         setContentView(R.layout.activity_search);
 
         // Setze die Spinner Optionen
-        // TODO: Spinner Optionen aus der Datenbanktabelle holen
         array_spinner=new String[5];
-        array_spinner[0]="Alle";
-        array_spinner[1]="Kneipe";
-        array_spinner[2]="Diskothek";
-        array_spinner[3]="Bar";
-        array_spinner[4]="option 4";
+        // Spinner Items aufbauen
+        try {
+            getSpinnerItems items = new getSpinnerItems(true);
+            array_spinner = items.buildItems(true);
+        }catch (Exception e){
+            // TODO Fehlerhandling
+        }
         type = (Spinner) findViewById(R.id.location_spinner);
         ArrayAdapter adapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, array_spinner);
