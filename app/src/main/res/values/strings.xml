@@ -23,5 +23,6 @@
     <string name="search_headline">Location suchen</string>
     <string name="impressum_text">Verantwortlich für den Inhalt:
         Peter Sieverding | Leif Ruppenthal | Marcel Köllmann</string>
+    <string name="mailto">Mail an Author</string>
 
 </resources>

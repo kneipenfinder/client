@@ -1,12 +1,22 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/backgroundStyle"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="pes.kneipenfinder.impressum">
+    tools:context="pes.kneipenfinder.impressum"
+    android:rowCount="1"
+    android:columnCount="1">
 
     <TextView
         android:text=""
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/impress" />
+        android:layout_height="433dp"
+        android:id="@+id/impress"
+        android:layout_row="0" />
 
-</RelativeLayout>
+    <Button
+        style="@style/buttonStyleNormal"
+        android:layout_width="326dp"
+        android:text="@string/mailto"
+        android:id="@+id/mailto"
+        android:onClick="button_mailto" />
+
+</GridLayout>

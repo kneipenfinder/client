@@ -1,10 +1,12 @@
 package pes.kneipenfinder;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import pes.kneipenfinder.R;
@@ -12,6 +14,7 @@ import pes.kneipenfinder.R;
 public class impressum extends Activity {
 
     private Intent i;
+    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,15 @@ public class impressum extends Activity {
         impressum.setText(getString(R.string.impressum_text));
     }
 
+    // Mail an App-Authoren
+    public void button_mailto(View v){
+        final Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"peter.sieverding@googlemail.com"});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "E-Mail zur App Kneipen-Finder");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Text eingeben...");
+        context.startActivity(Intent.createChooser(emailIntent, "Sende E-mail..."));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
