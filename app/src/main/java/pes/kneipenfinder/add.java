@@ -317,7 +317,11 @@ public class add extends Activity {
                 i = new Intent(getApplicationContext(), settings.class);
                 startActivity(i);
                 break;
-
+            case R.id.action_impressum:
+                // Impressum
+                i = new Intent(getApplicationContext(), impressum.class);
+                startActivity(i);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

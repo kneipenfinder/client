@@ -137,12 +137,11 @@ public class settings extends Activity {
                 setContentView(R.layout.activity_home);
                 break;
 
-            case R.id.action_settings:
-                // Einstellungen
-                i = new Intent(getApplicationContext(), settings.class);
+            case R.id.action_impressum:
+                // Impressum
+                i = new Intent(getApplicationContext(), impressum.class);
                 startActivity(i);
                 break;
-
         }
         return super.onOptionsItemSelected(item);
     }

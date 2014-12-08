@@ -2,7 +2,6 @@
 <resources>
 
     <string name="app_name">KneipenFinder</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_settings">Einstellungen</string>
     <string name="title_activity_find">Umkreissuche</string>
@@ -15,11 +14,14 @@
     <string name="title_activity_error_handing">errorHanding</string>
     <string name="title_activity_add">add</string>
     <string name="title_activity_rate">rate</string>
+    <string name="title_activity_display_results">displayResults</string>
+    <string name="title_activity_impressum">Impressum</string>
+    <string name="title_activity_search">search</string>
     <string name="add_headline">Location hinzufügen</string>
     <string name="rate_stars_headline">Bewertung</string>
     <string name="rate_comment_headline">Kommentar</string>
-    <string name="title_activity_search">search</string>
     <string name="search_headline">Location suchen</string>
-    <string name="title_activity_display_results">displayResults</string>
+    <string name="impressum_text">Verantwortlich für den Inhalt:
+        Peter Sieverding | Leif Ruppenthal | Marcel Köllmann</string>
 
 </resources>

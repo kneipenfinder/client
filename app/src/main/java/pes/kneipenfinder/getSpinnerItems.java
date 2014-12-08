@@ -35,11 +35,6 @@ public class getSpinnerItems {
             arraySpinner[i+1] = "Alle";
         }
 
-        /*arraySpinner[0]="Alle";
-        arraySpinner[1]="Kneipe";
-        arraySpinner[2]="Diskothek";
-        arraySpinner[3]="Bar";
-        arraySpinner[4]="option 4";*/
         return arraySpinner;
     }
 

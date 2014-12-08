@@ -43,6 +43,10 @@ public class home extends Activity {
 
         if(!serverCom.initiateHandshake()) {
             eHandling = new errorHandling(context,"", "Es ist ein unerwarteter Fehler aufgetreten", "Handshake");
+            // Nun muss sich die App schließen, da sichergestellt werden muss, dass der Anwender nichts mehr ausführt
+            finish();
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(0);
         }else{
             System.out.println("Handshake ok");
         }
@@ -72,20 +76,18 @@ public class home extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int id = item.getItemId();
         switch(id) {
-            case R.id.action_home:
-                // Home
-                setContentView(R.layout.activity_home);
-                break;
-
             case R.id.action_settings:
                 // Einstellungen
                 i = new Intent(getApplicationContext(), settings.class);
                 startActivity(i);
                 break;
-
+            case R.id.action_impressum:
+                // Impressum
+                i = new Intent(getApplicationContext(), impressum.class);
+                startActivity(i);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
