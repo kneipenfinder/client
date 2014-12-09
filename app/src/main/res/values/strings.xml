@@ -24,5 +24,8 @@
     <string name="impressum_text">Verantwortlich für den Inhalt:
         Peter Sieverding | Leif Ruppenthal | Marcel Köllmann</string>
     <string name="mailto">Mail an Author</string>
+    <string name="title_activity_social_media">socialMedia</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="social_media_text">Hier unsere Social Media Auftritte</string>
 
 </resources>

@@ -25,12 +25,12 @@ public class impressum extends Activity {
 
     // Mail an App-Authoren
     public void button_mailto(View v){
-        final Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setType("text/plain");
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"peter.sieverding@googlemail.com"});
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "E-Mail zur App Kneipen-Finder");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Text eingeben...");
-        context.startActivity(Intent.createChooser(emailIntent, "Sende E-mail..."));
+        i = new Intent(Intent.ACTION_SEND);
+        i.setType("text/plain");
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"peter.sieverding@googlemail.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "E-Mail zur App Kneipen-Finder");
+        i.putExtra(Intent.EXTRA_TEXT, "Text eingeben...");
+        context.startActivity(Intent.createChooser(i, "Sende E-mail..."));
     }
 
     @Override
@@ -48,10 +48,14 @@ public class impressum extends Activity {
                 // Home
                 setContentView(R.layout.activity_home);
                 break;
-
             case R.id.action_settings:
                 // Einstellungen
                 i = new Intent(getApplicationContext(), settings.class);
+                startActivity(i);
+                break;
+            case R.id.action_socialmedia:
+                // Social Media --> Facebook, Twitter, Google+
+                i = new Intent(getApplicationContext(), socialMedia.class);
                 startActivity(i);
                 break;
         }

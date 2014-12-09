@@ -33,10 +33,14 @@ public class rate extends Activity {
                 // Home
                 setContentView(R.layout.activity_home);
                 break;
-
             case R.id.action_settings:
                 // Einstellungen
                 i = new Intent(getApplicationContext(), settings.class);
+                startActivity(i);
+                break;
+            case R.id.action_socialmedia:
+                // Social Media --> Facebook, Twitter, Google+
+                i = new Intent(getApplicationContext(), socialMedia.class);
                 startActivity(i);
                 break;
 

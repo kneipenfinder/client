@@ -48,6 +48,10 @@
             android:name=".impressum"
             android:label="@string/title_activity_impressum" >
         </activity>
+        <activity
+            android:name=".socialMedia"
+            android:label="@string/title_activity_social_media" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

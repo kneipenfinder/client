@@ -1,0 +1,62 @@
+<GridLayout
+    style="@style/backgroundStyle"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="442dp">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                style="@style/buttonStyleNormal"
+                android:layout_width="wrap_content"
+                android:text="Facebook"
+                android:id="@+id/facebook"
+                android:onClick="button_openFacebook" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                style="@style/buttonStyleNormal"
+                android:layout_width="wrap_content"
+                android:text="Twitter"
+                android:id="@+id/twitter"
+                android:onClick="button_openTwitter" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                style="@style/buttonStyleNormal"
+                android:layout_width="wrap_content"
+                android:text="Google+"
+                android:id="@+id/google+"
+                android:onClick="button_openGoogle" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                style="@style/textStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/social_media_text"
+                android:id="@+id/tv_socialmedia" />
+        </TableRow>
+
+    </LinearLayout>
+
+</GridLayout>

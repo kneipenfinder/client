@@ -67,7 +67,6 @@ public class find extends Activity {
                 // Home
                 setContentView(R.layout.activity_home);
                 break;
-
             case R.id.action_settings:
                 // Einstellungen
                 i = new Intent(getApplicationContext(), settings.class);
@@ -76,6 +75,11 @@ public class find extends Activity {
             case R.id.action_impressum:
                 // Impressum
                 i = new Intent(getApplicationContext(), impressum.class);
+                startActivity(i);
+                break;
+            case R.id.action_socialmedia:
+                // Social Media --> Facebook, Twitter, Google+
+                i = new Intent(getApplicationContext(), socialMedia.class);
                 startActivity(i);
                 break;
         }
