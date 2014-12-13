@@ -222,8 +222,6 @@ public class add extends Activity {
         boolean addStatus = addLocation();
         if(addStatus){
             mDialog = new messageDialog(context, "Kneipe hinzugefügt", "Die Kneipe"+" "+name.getText()+" "+"wurde hinzugefügt und wartet nun auf Freigabe durch einen Administrator");
-        }else{
-            eHandling = new errorHandling(context, "" , "Die angegebene Kneipe konnte nicht eingetragen werden.", "");
         }
     }
 
@@ -248,11 +246,16 @@ public class add extends Activity {
                 String respond = home.serverCom.secureCom(json.toString());
                 json = new JSONObject(respond);
                 boolean addStatus = json.getBoolean("status");
+
+                if(!addStatus){
+                    eHandling = new errorHandling(context, "" , json.getString("msg"), "");
+                }
+
                 return addStatus;
             }catch(Exception e){
                 return false;
             }
-        }else{
+        }else {
             return false;
         }
     }
