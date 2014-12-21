@@ -2,9 +2,12 @@ package pes.kneipenfinder;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.text.Html;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -20,7 +23,7 @@ public class displayResults {
 
     private errorHandling eHandling;
 
-    public displayResults(String respond,String titleBar, Context context){
+    public displayResults(String respond, String titleBar, final Context context){
 
         try {
 
@@ -94,6 +97,23 @@ public class displayResults {
                     text3.setBackground(activity.getResources().getDrawable(R.drawable.find_table));
                     tableRow.addView(text3);
 
+                    // Location ID speichern
+                    final TextView text4 = new TextView(context);
+                    text4.setText(location.getString("id").trim());
+
+                    // Neue Activity zum anzeigen der geklickten Kneipe aufrufen
+                    tableRow.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent i = new Intent(context.getApplicationContext(), displayLocationDetailed.class);
+                            Bundle bundle = new Bundle();
+                            // Die aktuelle Kneipe als Parameter mitgeben
+                            bundle.putInt("LocationID", Integer.parseInt(text4.getText().toString()));
+                            // ... und der neuen actiyity übergeben
+                            i.putExtras(bundle);
+                            context.startActivity(i);
+                        }
+                    });
 
                     tableLayout.addView(tableRow);
                 }

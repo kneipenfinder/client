@@ -27,5 +27,6 @@
     <string name="title_activity_social_media">socialMedia</string>
     <string name="hello_world">Hello world!</string>
     <string name="social_media_text">Hier unsere Social Media Auftritte</string>
+    <string name="title_activity_display_location_detailed">Placeholder</string>
 
 </resources>
