@@ -28,5 +28,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="social_media_text">Hier unsere Social Media Auftritte</string>
     <string name="title_activity_display_location_detailed">Placeholder</string>
+    <string name="Tabcontrol1">Übersicht</string>
+    <string name="Tabcontrol2">Öffnungszeiten</string>
+    <string name="Tabcontrol3">Fotos</string>
+    <string name="Tabcontrol4">Bewertungen</string>
 
 </resources>

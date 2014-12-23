@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TabHost;
 
 import org.json.JSONObject;
 
@@ -17,10 +18,14 @@ public class displayLocationDetailed extends Activity {
     private Context context;
     private int currLocationID;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_location_detailed);
+
+        // Tabcontrol aufbauen
+        initTabControl();
 
         context = this;
         Activity activity = (Activity) context;
@@ -35,11 +40,14 @@ public class displayLocationDetailed extends Activity {
         getLocationDetails();
     }
 
+    // Hole sämtliche Location Informationen aus der Datenbank
     public void getLocationDetails(){
         JSONObject json = new JSONObject();
         try {
             json.put("action", "getLocationDetails");
             json.put("LocationID", currLocationID);
+            json.put("lat", location.getLatitude());
+            json.put("long", location.getLongitude());
             System.out.println(json);
         }catch(Exception e){
             // TODO Fehlerbehandlung
@@ -47,6 +55,33 @@ public class displayLocationDetailed extends Activity {
         // Respond aufnehmen
         String respond = home.serverCom.secureCom(json.toString());
         System.out.println(respond);
+    }
+
+    // Tab Control aufbauen
+    public void initTabControl(){
+        TabHost tabHost=(TabHost)findViewById(R.id.tabControl);
+        tabHost.setup();
+
+        TabHost.TabSpec spec1=tabHost.newTabSpec("Tab 1");
+        spec1.setContent(R.id.tab1);
+        spec1.setIndicator(getResources().getString(R.string.Tabcontrol1));
+
+        TabHost.TabSpec spec2=tabHost.newTabSpec("Tab 2");
+        spec2.setIndicator(getResources().getString(R.string.Tabcontrol2));
+        spec2.setContent(R.id.tab2);
+
+        TabHost.TabSpec spec3=tabHost.newTabSpec("Tab 3");
+        spec3.setIndicator(getResources().getString(R.string.Tabcontrol3));
+        spec3.setContent(R.id.tab3);
+
+        TabHost.TabSpec spec4=tabHost.newTabSpec("Tab 3");
+        spec4.setIndicator(getResources().getString(R.string.Tabcontrol4));
+        spec4.setContent(R.id.tab4);
+
+        tabHost.addTab(spec1);
+        tabHost.addTab(spec2);
+        tabHost.addTab(spec3);
+        tabHost.addTab(spec4);
     }
 
     @Override
