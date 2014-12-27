@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RatingBar;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -24,6 +25,22 @@ public class displayLocationDetailed extends Activity {
     private TextView tvStrasse;
     private TextView tvPLZ;
     private TextView tvOrt;
+    private TextView tvMontagVon;
+    private TextView tvMontagBis;
+    private TextView tvDienstagVon;
+    private TextView tvDienstagBis;
+    private TextView tvMittwochVon;
+    private TextView tvMittwochBis;
+    private TextView tvDonnerstagVon;
+    private TextView tvDonnerstagBis;
+    private TextView tvFreitagVon;
+    private TextView tvFreitagBis;
+    private TextView tvSamstagVon;
+    private TextView tvSamstagBis;
+    private TextView tvSonntagVon;
+    private TextView tvSonntagBis;
+    private RatingBar ratingBar;
+    private TextView tvAnzahlBewertungen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,8 +138,91 @@ public class displayLocationDetailed extends Activity {
     }
 
     // Tab 2 "Öffnungszeiten" füllen
-    public void initTab2(JSONObject respond){
-
+    public void initTab2(JSONObject respond) throws JSONException {
+        tvMontagVon = (TextView) findViewById(R.id.tvMontagVon);
+        if(respond.getString("Open_From_Monday") == "null"){
+            tvMontagVon.setText("n.a.");
+        }else {
+            tvMontagVon.setText(respond.getString("Open_From_Monday"));
+        }
+        tvMontagBis = (TextView) findViewById(R.id.tvMontagBis);
+        if(respond.getString("Open_To_Monday") == "null"){
+            tvMontagBis.setText("n.a.");
+        }else {
+            tvMontagBis.setText(respond.getString("Open_To_Monday"));
+        }
+        tvDienstagVon = (TextView) findViewById(R.id.tvDienstagVon);
+        if(respond.getString("Open_From_Tuesday")== "null"){
+            tvDienstagVon.setText("n.a.");
+        }else {
+            tvDienstagVon.setText(respond.getString("Open_From_Tuesday"));
+        }
+        tvDienstagBis = (TextView) findViewById(R.id.tvDienstagBis);
+        if(respond.getString("Open_To_Tuesday") == "null"){
+            tvDienstagBis.setText("n.a.");
+        }else {
+            tvDienstagBis.setText(respond.getString("Open_To_Tuesday"));
+        }
+        tvMittwochVon = (TextView) findViewById(R.id.tvMittwochVon);
+        if(respond.getString("Open_From_Wednesday") == "null"){
+            tvMittwochVon.setText("n.a.");
+        }else {
+            tvMittwochVon.setText(respond.getString("Open_From_Wednesday"));
+        }
+        tvMittwochBis = (TextView) findViewById(R.id.tvMittwochBis);
+        if(respond.getString("Open_To_Wednesday") == "null"){
+            tvMittwochBis.setText("n.a.");
+        }else {
+            tvMittwochBis.setText(respond.getString("Open_To_Wednesday"));
+        }
+        tvDonnerstagVon = (TextView) findViewById(R.id.tvDonnerstagVon);
+        if(respond.getString("Open_From_Thursday") == "null"){
+            tvDonnerstagVon.setText("n.a.");
+        }else {
+            tvDonnerstagVon.setText(respond.getString("Open_From_Thursday"));
+        }
+        tvDonnerstagBis = (TextView) findViewById(R.id.tvDonnerstagBis);
+        if(respond.getString("Open_To_Thursday") == "null"){
+            tvDonnerstagBis.setText("n.a.");
+        }else {
+            tvDonnerstagBis.setText(respond.getString("Open_To_Thursday"));
+        }
+        tvFreitagVon = (TextView) findViewById(R.id.tvFreitagVon);
+        if(respond.getString("Open_From_Friday") == "null"){
+            tvFreitagVon.setText("n.a.");
+        }else {
+            tvFreitagVon.setText(respond.getString("Open_From_Friday"));
+        }
+        tvFreitagBis = (TextView) findViewById(R.id.tvFreitagBis);
+        if(respond.getString("Open_To_Friday") == "null"){
+            tvFreitagBis.setText("n.a.");
+        }else {
+            tvFreitagBis.setText(respond.getString("Open_To_Friday"));
+        }
+        tvSamstagVon = (TextView) findViewById(R.id.tvSamstagVon);
+        if(respond.getString("Open_From_Saturday") == "null"){
+            tvSamstagVon.setText("n.a.");
+        }else {
+            tvSamstagVon.setText(respond.getString("Open_From_Saturday"));
+        }
+        tvSamstagBis = (TextView) findViewById(R.id.tvSamstagBis);
+        if(respond.getString("Open_To_Saturday") == "null"){
+            tvSamstagBis.setText("n.a.");
+        }else {
+            tvSamstagBis.setText(respond.getString("Open_To_Saturday"));
+        }
+        tvSonntagVon = (TextView) findViewById(R.id.tvSonntagVon);
+        if(respond.getString("Open_From_Sunday") == "null"){
+            tvSonntagVon.setText("n.a.");
+        }else {
+            tvSonntagVon.setText(respond.getString("Open_From_Sunday"));
+        }
+        tvSonntagBis = (TextView) findViewById(R.id.tvSonntagBis);
+        if(respond.getString("Open_To_Sunday") == "null"){
+            tvSonntagBis.setText("n.a.");
+        }else {
+            tvSonntagBis.setText(respond.getString("Open_To_Sunday"));
+        }
     }
 
     // Tab 3 "Fotos füllen"
@@ -131,8 +231,17 @@ public class displayLocationDetailed extends Activity {
     }
 
     // Tab 4 "Bewertungen und Kommentare" füllen
-    public void initTab4(JSONObject respond){
-
+    public void initTab4(JSONObject respond) throws JSONException {
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        String rating;
+        rating = respond.getString("rating_stars");
+        ratingBar.setRating(Float.parseFloat(rating));
+        tvAnzahlBewertungen = (TextView) findViewById(R.id.tvAnzahlBewertungen);
+        if(respond.getString("rating_amount") == "0"){
+            tvAnzahlBewertungen.setText("Keine Bewertungen");
+        }else{
+            tvAnzahlBewertungen.setText(respond.getString("rating_amount") + " " + "Bewertung(en)");
+        }
     }
 
     @Override
