@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
+import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import pes.kneipenfinder.R;
@@ -17,7 +20,10 @@ public class displayLocationDetailed extends Activity {
     private Intent i;
     private Context context;
     private int currLocationID;
-
+    private TextView tvName;
+    private TextView tvStrasse;
+    private TextView tvPLZ;
+    private TextView tvOrt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +54,30 @@ public class displayLocationDetailed extends Activity {
             json.put("LocationID", currLocationID);
             json.put("lat", location.getLatitude());
             json.put("long", location.getLongitude());
-            System.out.println(json);
+
+            // Respond aufnehmen
+            String respond = home.serverCom.secureCom(json.toString());
+            JSONObject jsonObject;
+            jsonObject = new JSONObject(respond);
+            Boolean status = jsonObject.getBoolean("status");
+            if(status){
+                JSONArray locationArray;
+                locationArray = jsonObject.getJSONArray("location");
+                JSONObject location;
+                location = locationArray.getJSONObject(0);
+                initTab1(location);
+                initTab2(location);
+                initTab3(location);
+                initTab4(location);
+            }else{
+                //TODO Fehler bei JSON erstellung handeln
+                System.out.println("Fehler bei JSON");
+            }
         }catch(Exception e){
             // TODO Fehlerbehandlung
+            System.out.println("Fehler bei Kommunikation");
         }
-        // Respond aufnehmen
-        String respond = home.serverCom.secureCom(json.toString());
-        System.out.println(respond);
+
     }
 
     // Tab Control aufbauen
@@ -82,6 +105,34 @@ public class displayLocationDetailed extends Activity {
         tabHost.addTab(spec2);
         tabHost.addTab(spec3);
         tabHost.addTab(spec4);
+    }
+
+    // Tab 1 "Übersicht" füllen
+    public void initTab1(JSONObject respond) throws JSONException {
+        tvName = (TextView) findViewById(R.id.tvName);
+        tvName.setText(respond.getString("name"));
+        tvStrasse = (TextView) findViewById(R.id.tvStrasse);
+        tvStrasse.setText(respond.getString("strasse"));
+        // TODO Einkommentieren wenn kommunikation steht
+        /*tvPLZ = (TextView) findViewById(R.id.tvPLZ);
+        tvPLZ.setText(respond.getString("postcode"));
+        tvOrt = (TextView) findViewById(R.id.tvOrt);
+        tvOrt.setText(respond.getString("ort"));*/
+    }
+
+    // Tab 2 "Öffnungszeiten" füllen
+    public void initTab2(JSONObject respond){
+
+    }
+
+    // Tab 3 "Fotos füllen"
+    public void initTab3(JSONObject respond){
+
+    }
+
+    // Tab 4 "Bewertungen und Kommentare" füllen
+    public void initTab4(JSONObject respond){
+
     }
 
     @Override
