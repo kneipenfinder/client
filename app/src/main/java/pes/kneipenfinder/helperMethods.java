@@ -27,4 +27,14 @@ public class helperMethods {
         columnWidth = point.x;
         return columnWidth;
     }
+
+    public static String getServerURL(){
+        String serverURL = "http://api.futurebot.de/";
+        return serverURL;
+    }
+
+    public static String getServerURLForPictures(){
+        String serverURL = "futurebot.de/";
+        return serverURL;
+    }
 }

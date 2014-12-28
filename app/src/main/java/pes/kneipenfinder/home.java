@@ -7,18 +7,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 
 public class home extends Activity {
 
     public static serverCommunication serverCom;
-    private String serverURL = "http://api.futurebot.de/";
+    private String serverURL = helperMethods.getServerURL();
     private location location;
     public static AppProperties prop;
     private Intent i;

@@ -53,7 +53,7 @@ public class displayLocationDetailed extends Activity {
     private GridView gvFotos;
     private int gridPadding;
     private int gridNumberOfColumns;
-    private static String pictureURL = "/var/www/web/location_pictures/";
+    private static String pictureURL = "location_pictures/";
     private ArrayList<String> filePaths = new ArrayList<String>();
     private gridViewImageAdapter adapter;
 
@@ -318,7 +318,18 @@ public class displayLocationDetailed extends Activity {
 
             String respond = home.serverCom.secureCom(json.toString());
             System.out.println(respond);
-
+            JSONObject object = new JSONObject(respond);
+            Boolean status = object.getBoolean("status");
+            if(!status){
+                // TODO Errorhandling status nicht ok
+            }else{
+                JSONArray pictures = object.getJSONArray("pictures");
+                for (int i = 0; i < pictures.length(); i++){
+                    JSONObject picture = pictures.getJSONObject(i);
+                    String currPicture = helperMethods.getServerURLForPictures() + pictureURL + picture.getString("Filename");
+                    filePaths.add(currPicture);
+                }
+            }
         }catch (Exception e){
             // TODO Fehlerhandling
         }
