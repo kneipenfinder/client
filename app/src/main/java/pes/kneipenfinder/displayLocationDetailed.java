@@ -3,11 +3,13 @@ package pes.kneipenfinder;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.ExpandableListView;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TabHost;
@@ -18,8 +20,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-import pes.kneipenfinder.R;
 
 public class displayLocationDetailed extends Activity {
 
@@ -50,6 +50,12 @@ public class displayLocationDetailed extends Activity {
     private ArrayList<String> parentItems = new ArrayList<String>();
     private ArrayList<String> childItems = new ArrayList<String>();
     private ArrayAdapter<String> listAdapter;
+    private GridView gvFotos;
+    private int gridPadding;
+    private int gridNumberOfColumns;
+    private static String pictureURL = "/var/www/web/location_pictures/";
+    private ArrayList<String> filePaths = new ArrayList<String>();
+    private gridViewImageAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +91,6 @@ public class displayLocationDetailed extends Activity {
             String respond = home.serverCom.secureCom(json.toString());
             JSONObject jsonObject;
             jsonObject = new JSONObject(respond);
-            System.out.println(respond);
             Boolean status = jsonObject.getBoolean("status");
             if(status){
                 JSONArray locationArray;
@@ -237,7 +242,11 @@ public class displayLocationDetailed extends Activity {
 
     // Tab 3 "Fotos füllen"
     public void initTab3(JSONObject respond){
-
+        gvFotos = (GridView) findViewById(R.id.gvFotos);
+        int columnwidth = initilizeGridLayout();
+        getPicturepaths();
+        adapter = new gridViewImageAdapter(this, filePaths, columnwidth);
+        gvFotos.setAdapter(adapter);
     }
 
     // Tab 4 "Bewertungen und Kommentare" füllen
@@ -255,6 +264,7 @@ public class displayLocationDetailed extends Activity {
         setListView(respond);
     }
 
+    // Befüllt die List View mit den Kommentaren zu der Location aus der DB
     public void setListView(JSONObject respond) throws JSONException {
         elvKommentare = (ListView) findViewById(R.id.elvKommentare);
         elvKommentare.setDividerHeight(2);
@@ -264,6 +274,7 @@ public class displayLocationDetailed extends Activity {
         elvKommentare.setAdapter(listAdapter);
     }
 
+    // Setzt die Kommentare...
     public void setParentItems(JSONObject respond) throws JSONException {
         JSONArray comments = respond.getJSONArray("comments");
         for(int i = 0; i < comments.length(); i++){
@@ -275,8 +286,42 @@ public class displayLocationDetailed extends Activity {
         }
     }
 
+    // Noch nicht in Benutzung
     public void setChildItems(Integer index, String comment){
         childItems.add(index, comment);
+    }
+
+    // initialisiert das Grid Layout zum Anzeigen der Location Fotos
+    private int initilizeGridLayout() {
+        Resources r = getResources();
+        float padding = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                gridPadding, r.getDisplayMetrics());
+
+        int columnWidth = (int) ((helperMethods.getScreenWidth(context) - ((gridNumberOfColumns + 1) * padding)) / gridNumberOfColumns);
+
+        gvFotos.setNumColumns(3);
+        gvFotos.setColumnWidth(columnWidth);
+        gvFotos.setStretchMode(GridView.NO_STRETCH);
+        gvFotos.setPadding((int) padding, (int) padding, (int) padding,
+                (int) padding);
+        gvFotos.setHorizontalSpacing((int) padding);
+        gvFotos.setVerticalSpacing((int) padding);
+        return columnWidth;
+    }
+
+    // Holt alle Fotos aus der Datenbank
+    public void getPicturepaths(){
+        JSONObject json = new JSONObject();
+        try {
+            json.put("action", "getLocationPictures");
+            json.put("LocationID", currLocationID);
+
+            String respond = home.serverCom.secureCom(json.toString());
+            System.out.println(respond);
+
+        }catch (Exception e){
+            // TODO Fehlerhandling
+        }
     }
 
     @Override
