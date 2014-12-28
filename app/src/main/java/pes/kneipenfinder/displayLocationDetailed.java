@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -13,6 +16,8 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import pes.kneipenfinder.R;
 
@@ -41,6 +46,10 @@ public class displayLocationDetailed extends Activity {
     private TextView tvSonntagBis;
     private RatingBar ratingBar;
     private TextView tvAnzahlBewertungen;
+    private ListView elvKommentare;
+    private ArrayList<String> parentItems = new ArrayList<String>();
+    private ArrayList<String> childItems = new ArrayList<String>();
+    private ArrayAdapter<String> listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +85,7 @@ public class displayLocationDetailed extends Activity {
             String respond = home.serverCom.secureCom(json.toString());
             JSONObject jsonObject;
             jsonObject = new JSONObject(respond);
+            System.out.println(respond);
             Boolean status = jsonObject.getBoolean("status");
             if(status){
                 JSONArray locationArray;
@@ -242,6 +252,31 @@ public class displayLocationDetailed extends Activity {
         }else{
             tvAnzahlBewertungen.setText(respond.getString("rating_amount") + " " + "Bewertung(en)");
         }
+        setListView(respond);
+    }
+
+    public void setListView(JSONObject respond) throws JSONException {
+        elvKommentare = (ListView) findViewById(R.id.elvKommentare);
+        elvKommentare.setDividerHeight(2);
+        elvKommentare.setClickable(true);
+        setParentItems(respond);
+        listAdapter = new ArrayAdapter<String>(this, R.layout.elv_simple_row, parentItems);
+        elvKommentare.setAdapter(listAdapter);
+    }
+
+    public void setParentItems(JSONObject respond) throws JSONException {
+        JSONArray comments = respond.getJSONArray("comments");
+        for(int i = 0; i < comments.length(); i++){
+            JSONObject comment = comments.getJSONObject(i);
+            if(!comment.getString("Optional_Comment").equals("null")) {
+                parentItems.add(i, comment.getString("Optional_Comment"));
+            }
+            setChildItems(i ,comment.toString());
+        }
+    }
+
+    public void setChildItems(Integer index, String comment){
+        childItems.add(index, comment);
     }
 
     @Override
