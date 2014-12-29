@@ -243,10 +243,17 @@ public class displayLocationDetailed extends Activity {
     // Tab 3 "Fotos füllen"
     public void initTab3(JSONObject respond){
         gvFotos = (GridView) findViewById(R.id.gvFotos);
-        int columnwidth = initilizeGridLayout();
+        initilizeGridLayout();
         getPicturepaths();
-        adapter = new gridViewImageAdapter(this, filePaths, columnwidth);
-        gvFotos.setAdapter(adapter);
+        // TODO: Image View dynamisch ermittlen
+        Integer imageWidth = 100;
+        adapter = new gridViewImageAdapter(this, filePaths, imageWidth);
+        try {
+            gvFotos.setAdapter(adapter);
+        } catch (Exception e){
+            // TODO Fehlerhandling  beim laden der Fotos
+            System.out.println(e);
+        }
     }
 
     // Tab 4 "Bewertungen und Kommentare" füllen
@@ -292,7 +299,7 @@ public class displayLocationDetailed extends Activity {
     }
 
     // initialisiert das Grid Layout zum Anzeigen der Location Fotos
-    private int initilizeGridLayout() {
+    private void initilizeGridLayout() {
         Resources r = getResources();
         float padding = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 gridPadding, r.getDisplayMetrics());
@@ -306,7 +313,6 @@ public class displayLocationDetailed extends Activity {
                 (int) padding);
         gvFotos.setHorizontalSpacing((int) padding);
         gvFotos.setVerticalSpacing((int) padding);
-        return columnWidth;
     }
 
     // Holt alle Fotos aus der Datenbank

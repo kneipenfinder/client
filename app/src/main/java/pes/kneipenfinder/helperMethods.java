@@ -34,7 +34,7 @@ public class helperMethods {
     }
 
     public static String getServerURLForPictures(){
-        String serverURL = "futurebot.de/";
+        String serverURL = "http://www.futurebot.de/";
         return serverURL;
     }
 }

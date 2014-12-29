@@ -13,9 +13,6 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 
@@ -91,28 +88,29 @@ public class gridViewImageAdapter extends BaseAdapter {
      * Resizing image size
      */
     public static Bitmap decodeFile(String filePath, int WIDTH, int HIGHT) {
-        try {
 
-            File f = new File(filePath);
-
-            BitmapFactory.Options o = new BitmapFactory.Options();
-            o.inJustDecodeBounds = true;
-            BitmapFactory.decodeStream(new FileInputStream(f), null, o);
-
-            final int REQUIRED_WIDTH = WIDTH;
-            final int REQUIRED_HIGHT = HIGHT;
-            int scale = 1;
-            while (o.outWidth / scale / 2 >= REQUIRED_WIDTH
-                    && o.outHeight / scale / 2 >= REQUIRED_HIGHT)
-                scale *= 2;
-
-            BitmapFactory.Options o2 = new BitmapFactory.Options();
-            o2.inSampleSize = scale;
-            return BitmapFactory.decodeStream(new FileInputStream(f), null, o2);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inJustDecodeBounds = true;
+        asyncImageLoader factory = new asyncImageLoader(filePath);
+        Bitmap result;
+        try{
+            result = factory.execute(filePath).get();
+        }catch (Exception e){
+            // TODO Fehlerhandling
+            result = null;
+            System.out.println(e);
         }
-        return null;
+
+        final int REQUIRED_WIDTH = WIDTH;
+        final int REQUIRED_HIGHT = HIGHT;
+        int scale = 1;
+        while (o.outWidth / scale / 2 >= REQUIRED_WIDTH
+                && o.outHeight / scale / 2 >= REQUIRED_HIGHT)
+            scale *= 2;
+
+        BitmapFactory.Options o2 = new BitmapFactory.Options();
+        o2.inSampleSize = scale;
+        return result;
     }
 
 }
