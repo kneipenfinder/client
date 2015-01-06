@@ -176,6 +176,15 @@ public class displayLocationDetailed extends Activity {
                 new socialMedia().button_openTwitter(v);
             }
         });
+
+        final Button buttonNavigate = (Button) findViewById(R.id.button_maps);
+        buttonNavigate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String searchString =  tvName.getText().toString()+tvStrasse.getText().toString()+tvPLZ.getText().toString()+tvOrt.getText().toString();
+                new startGoogleMaps(0,0, searchString, context);
+            }
+        });
     }
 
     // Tab 2 "Öffnungszeiten" füllen

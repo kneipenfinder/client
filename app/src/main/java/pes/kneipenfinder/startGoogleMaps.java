@@ -13,7 +13,7 @@ public class startGoogleMaps {
 
         String url = "";
         // URL erzeugen ...
-        if(latitude == 0 && longitude == 0) {
+        if(latitude != 0 && longitude != 0) {
             url = "geo:" + latitude + "," + longitude;
         } else if(!locationSearchText.isEmpty()){
             url = "geo:0,0?q="+locationSearchText;
@@ -23,6 +23,8 @@ public class startGoogleMaps {
         if(!url.isEmpty()) {
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
             context.startActivity(intent);
+        }else {
+            errorHandling handling = new errorHandling(context,"Fehler aufgetreten","Die Navigation konnte nicht gestartet werden", "");
         }
     }
 }
