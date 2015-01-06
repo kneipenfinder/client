@@ -79,6 +79,7 @@ public class gridViewImageAdapter extends BaseAdapter {
 
         @Override
         public void onClick(View v) {
+            System.out.println("Test12345");
             // TODO Hier die Fullscreen activity starten
         }
 

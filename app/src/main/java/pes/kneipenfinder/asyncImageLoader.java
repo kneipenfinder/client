@@ -32,6 +32,6 @@ public class asyncImageLoader extends AsyncTask<String, Void, Bitmap> {
     }
 
     protected void onPostExecute(Bitmap result) {
-
+        // Hier die Endaufgaben erledigen
     }
 }

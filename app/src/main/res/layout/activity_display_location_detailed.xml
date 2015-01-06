@@ -84,6 +84,26 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent">
 
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Facebook"
+                                android:id="@+id/button_facebook"
+                                android:singleLine="false" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="twitter"
+                                android:id="@+id/button_twitter"
+                                android:singleLine="false" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Google+"
+                                android:id="@+id/button_google"
+                                android:singleLine="false" />
                         </TableRow>
                     </TableLayout>
                 </LinearLayout>

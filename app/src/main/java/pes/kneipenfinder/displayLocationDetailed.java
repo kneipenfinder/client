@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -150,6 +152,30 @@ public class displayLocationDetailed extends Activity {
         tvPLZ.setText(respond.getString("postcode"));
         tvOrt = (TextView) findViewById(R.id.tvOrt);
         tvOrt.setText(respond.getString("ort"));*/
+
+        final Button buttonFacebook = (Button) findViewById(R.id.button_facebook);
+        buttonFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new socialMedia().button_openFacebook(v);
+            }
+        });
+
+        final Button buttonGoogle = (Button) findViewById(R.id.button_google);
+        buttonGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new socialMedia().button_openGoogle(v);
+            }
+        });
+
+        final Button buttonTwitter = (Button) findViewById(R.id.button_twitter);
+        buttonTwitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new socialMedia().button_openTwitter(v);
+            }
+        });
     }
 
     // Tab 2 "Öffnungszeiten" füllen
