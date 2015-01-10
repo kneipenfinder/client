@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import pes.kneipenfinder.R;
 
-public class rate extends Activity {
+public class rateSingleLocation extends Activity {
 
     private Intent i;
 

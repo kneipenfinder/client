@@ -33,7 +33,7 @@
             android:label="@string/title_activity_add" >
         </activity>
         <activity
-            android:name=".rate"
+            android:name=".rateSingleLocation"
             android:label="@string/title_activity_rate" >
         </activity>
         <activity

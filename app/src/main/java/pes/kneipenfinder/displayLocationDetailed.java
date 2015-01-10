@@ -95,14 +95,28 @@ public class displayLocationDetailed extends Activity {
             jsonObject = new JSONObject(respond);
             Boolean status = jsonObject.getBoolean("status");
             if(status){
-                JSONArray locationArray;
-                locationArray = jsonObject.getJSONArray("location");
                 JSONObject location;
-                location = locationArray.getJSONObject(0);
-                initTab1(location);
-                initTab2(location);
-                initTab3(location);
-                initTab4(location);
+                location = jsonObject.getJSONObject("location");
+                try {
+                    initTab1(location);
+                }catch (Exception e){
+                    // Fehler abfangen
+                }
+                try {
+                    initTab2(location);
+                } catch (Exception e){
+                    // Fehler abfangen
+                }
+                try {
+                    initTab3(location);
+                }catch (Exception e){
+                    // Fehler abfangen
+                }
+                try {
+                    initTab4(location);
+                }catch (Exception e){
+                    // Fehler abfangen
+                }
             }else{
                 //TODO Fehler bei JSON erstellung handeln
                 System.out.println("Fehler bei JSON");
@@ -147,11 +161,10 @@ public class displayLocationDetailed extends Activity {
         tvName.setText(respond.getString("name"));
         tvStrasse = (TextView) findViewById(R.id.tvStrasse);
         tvStrasse.setText(respond.getString("strasse"));
-        // TODO Einkommentieren wenn kommunikation steht
-        /*tvPLZ = (TextView) findViewById(R.id.tvPLZ);
+        tvPLZ = (TextView) findViewById(R.id.tvPLZ);
         tvPLZ.setText(respond.getString("postcode"));
         tvOrt = (TextView) findViewById(R.id.tvOrt);
-        tvOrt.setText(respond.getString("ort"));*/
+        tvOrt.setText(respond.getString("city"));
 
         final Button buttonFacebook = (Button) findViewById(R.id.button_facebook);
         buttonFacebook.setOnClickListener(new View.OnClickListener() {
@@ -181,8 +194,25 @@ public class displayLocationDetailed extends Activity {
         buttonNavigate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String searchString =  tvName.getText().toString()+tvStrasse.getText().toString()+tvPLZ.getText().toString()+tvOrt.getText().toString();
-                new startGoogleMaps(0,0, searchString, context);
+                try {
+                    String searchString = "";
+                    if(!tvName.getText().toString().isEmpty()){
+                        searchString = tvName.getText().toString()+",";
+                    }
+                    if(!tvStrasse.getText().toString().isEmpty()){
+                        searchString = searchString + tvStrasse.getText().toString()+",";
+                    }
+                    if(!tvPLZ.getText().toString().isEmpty()){
+                        searchString = searchString + tvPLZ.getText().toString()+",";
+                    }
+                    if(!tvOrt.getText().toString().isEmpty()){
+                        searchString = searchString + tvOrt.getText().toString();
+                    }
+                    new startGoogleMaps(0,0, searchString, context);
+                }catch (Exception e){
+                    // TODO FEHLERHANDLING
+                    System.out.println(e);
+                }
             }
         });
     }
@@ -293,6 +323,14 @@ public class displayLocationDetailed extends Activity {
 
     // Tab 4 "Bewertungen und Kommentare" füllen
     public void initTab4(JSONObject respond) throws JSONException {
+        final Button buttonRate = (Button) findViewById(R.id.button_rate);
+        buttonRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), rateSingleLocation.class);
+                context.startActivity(intent);
+            }
+        });
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         String rating;
         rating = respond.getString("rating_stars");

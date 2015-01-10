@@ -116,6 +116,7 @@
                                 android:id="@+id/button_google"
                                 android:singleLine="false" />
                         </TableRow>
+
                     </TableLayout>
                 </LinearLayout>
 
@@ -394,9 +395,23 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:text="Bewertung"
+                                android:text="@string/tv_Bewerten"
                                 android:id="@+id/tvRating"
                                 android:singleLine="false" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
+
+                            <Button
+                                style="?android:attr/buttonStyleSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/button_Bewerten"
+                                android:id="@+id/button_rate"
+                                android:longClickable="false" />
                         </TableRow>
 
                         <TableRow
@@ -407,7 +422,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/ratingBar"
-                                android:stepSize="0.1" />
+                                android:stepSize="0.1"
+                                android:isIndicator="true"
+                                android:clickable="false" />
                         </TableRow>
 
                         <TableRow
@@ -430,7 +447,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:text="Kommentare"
+                                android:text="@string/tv_Kommentare"
                                 android:id="@+id/tvKommentare" />
                         </TableRow>
 
@@ -444,6 +461,7 @@
                                 android:id="@+id/elvKommentare"
                                 android:headerDividersEnabled="false" />
                         </TableRow>
+
                     </TableLayout>
                 </LinearLayout>
 

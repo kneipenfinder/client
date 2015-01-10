@@ -32,5 +32,8 @@
     <string name="Tabcontrol2">Öffnungszeiten</string>
     <string name="Tabcontrol3">Fotos</string>
     <string name="Tabcontrol4">Bewertungen</string>
+    <string name="button_Bewerten">Bewerten</string>
+    <string name="tv_Bewerten">Bewertung</string>
+    <string name="tv_Kommentare">Kommentare</string>
 
 </resources>
