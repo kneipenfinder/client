@@ -2,6 +2,7 @@ package pes.kneipenfinder;
 
 import android.content.Context;
 import android.graphics.Point;
+import android.provider.Settings;
 import android.view.Display;
 import android.view.WindowManager;
 
@@ -36,5 +37,10 @@ public class helperMethods {
     public static String getServerURLForPictures(){
         String serverURL = "http://www.futurebot.de/";
         return serverURL;
+    }
+
+    public static String getDeviceID(Context context){
+        String id = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+        return id;
     }
 }

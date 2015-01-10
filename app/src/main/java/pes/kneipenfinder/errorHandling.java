@@ -32,9 +32,11 @@ public class errorHandling {
             return "4444";
         }else if(errorSource == "GPS"){
             return "5555";
+        }else if(errorSource == "rate") {
+            return "6666";
         }
         else{
-            return "6666";
+            return "7777";
         }
     }
 

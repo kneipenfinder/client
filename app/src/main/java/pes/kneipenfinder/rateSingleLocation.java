@@ -10,32 +10,84 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
+
+import org.json.JSONObject;
 
 public class rateSingleLocation extends Activity {
 
     private Intent i;
+    private int currLocationID;
+    private String currLocationName;
     private EditText Kommentar;
     private RatingBar ratingBar;
     private Context context = this;
+    private Button buttonRate;
+    private TextView tvLocationName;
+    private errorHandling eHandling;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate);
 
+        // Die übergebene LocationID wieder aufnehmen und in eine Variable speichern
+        Bundle b = getIntent().getExtras();
+        currLocationID = b.getInt("LocationID");
+        currLocationName = b.getString("LocationName");
+
+        // Initialisieren
+        initRate();
+
+        buttonRate = (Button) findViewById(R.id.rate);
+        buttonRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ratingBar.getRating() != 0){
+                    try {
+                        JSONObject json = new JSONObject();
+                        setJSON(json);
+                        // Respond aufnehmen
+                        String respond = home.serverCom.secureCom(json.toString());
+                        System.out.println(respond);
+                        JSONObject jsonObject;
+                        jsonObject = new JSONObject(respond);
+                        Boolean status = jsonObject.getBoolean("status");
+                        if(status){
+                            finish();
+                            messageDialog msg = new messageDialog(context, "Erfolgreich abgestimmt", "Die Location wurde bewertet.");
+                        }else{
+                            eHandling = new errorHandling(context,"Fehler bei Abgabe der Bewertung", "Es ist ein unerwarteter Fehler aufgetreten", "rate");
+                        }
+                    } catch (Exception e){
+                        eHandling = new errorHandling(context,"Fehler bei Abgabe der Bewertung", "Es ist ein unerwarteter Fehler aufgetreten", "rate");
+                    }
+                }else{
+                    eHandling = new errorHandling(context,"Es wurde keine Bewertung abgegeben", "Es muss mindestens mit einem Stern bewertet werden", "");
+                }
+            }
+        });
+    }
+
+    public void initRate(){
+        tvLocationName = (TextView) findViewById(R.id.tvLocationName);
+        tvLocationName.setText(currLocationName);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         ratingBar.setNumStars(5);
         // On Click Listener für die Postleitzahl der Location
         Kommentar = (EditText) findViewById(R.id.editText_Comment);
+        Kommentar.setFocusable(false);
+        Kommentar.setClickable(true);
         Kommentar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // hole das Alert Layout
                 LayoutInflater layoutInflater = LayoutInflater.from(context);
 
-                View promptView = layoutInflater.inflate(R.layout.alert_postcode, null);
+                View promptView = layoutInflater.inflate(R.layout.alert_comment, null);
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
@@ -67,6 +119,17 @@ public class rateSingleLocation extends Activity {
         });
     }
 
+    public void setJSON(JSONObject json){
+        try {
+            json.put("action", "rateLocation");
+            json.put("LocationID", currLocationID);
+            json.put("Rating", ratingBar.getRating());
+            json.put("Comment", Kommentar.getText().toString());
+        } catch (Exception e){
+            // TODO Fehlerhandling
+            System.out.println(e);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

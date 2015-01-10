@@ -328,7 +328,14 @@ public class displayLocationDetailed extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), rateSingleLocation.class);
+                Bundle bundle = new Bundle();
+                // Die aktuelle Kneipe als Parameter mitgeben
+                bundle.putInt("LocationID", currLocationID);
+                bundle.putString("LocationName", tvName.getText().toString());
+                // ... und der neuen actiyity übergeben
+                intent.putExtras(bundle);
                 context.startActivity(intent);
+                getLocationDetails();
             }
         });
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);

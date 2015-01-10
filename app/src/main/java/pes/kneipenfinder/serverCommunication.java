@@ -1,20 +1,17 @@
 package pes.kneipenfinder;
 
-import android.app.ExpandableListActivity;
 import android.content.Context;
 import android.util.Base64;
-import android.util.Base64DataException;
 
 import org.json.JSONObject;
 
 import java.math.BigInteger;
 import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.security.MessageDigest;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -85,6 +82,7 @@ public class serverCommunication {
     // Initiiert den Http Handshake (Diffie-Hellmann Verschlüsselung) mit dem Server
     public boolean initiateHandshake(){
         setParameter("action", "requestPG");
+        setParameter("deviceID", home.deviceID);
         String respond = request();
         try {
             json = new JSONObject(respond);

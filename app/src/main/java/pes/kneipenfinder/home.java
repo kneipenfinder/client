@@ -12,6 +12,7 @@ import android.view.View;
 public class home extends Activity {
 
     public static serverCommunication serverCom;
+    public static String deviceID;
     private String serverURL = helperMethods.getServerURL();
     private location location;
     public static AppProperties prop;
@@ -25,6 +26,8 @@ public class home extends Activity {
         setContentView(R.layout.activity_home);
 
         context = this;
+        // Hole die Geräte ID
+        deviceID = helperMethods.getDeviceID(context);
         // Starte bei App Start die Kommunikation mit dem Server
         serverCom = new serverCommunication(serverURL, context);
         location = new location();
