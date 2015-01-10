@@ -35,5 +35,6 @@
     <string name="button_Bewerten">Bewerten</string>
     <string name="tv_Bewerten">Bewertung</string>
     <string name="tv_Kommentare">Kommentare</string>
+    <string name="tv_Label_Comment">Kommentar eingeben</string>
 
 </resources>

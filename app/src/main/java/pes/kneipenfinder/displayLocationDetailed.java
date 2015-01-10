@@ -334,6 +334,7 @@ public class displayLocationDetailed extends Activity {
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         String rating;
         rating = respond.getString("rating_stars");
+        ratingBar.setNumStars(5);
         ratingBar.setRating(Float.parseFloat(rating));
         tvAnzahlBewertungen = (TextView) findViewById(R.id.tvAnzahlBewertungen);
         if(respond.getString("rating_amount") == "0"){

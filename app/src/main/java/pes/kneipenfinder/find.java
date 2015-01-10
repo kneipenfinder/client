@@ -3,20 +3,11 @@ package pes.kneipenfinder;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Html;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
-
-import pes.kneipenfinder.R;
 
 public class find extends Activity {
 
@@ -29,6 +20,9 @@ public class find extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find);
         findLocation(this);
+        // TODO: Hier auch noch aufnehemen aus welcher Activity man kommt
+        // TODO: Wenn aus rate, dann muss bei click auf Location rateSingleLocation aufgerufen werden
+        // TODO: Ansonsten Display Single Locatioon
     }
 
     private void findLocation(Context context){
