@@ -30,12 +30,12 @@ public class helperMethods {
     }
 
     public static String getServerURL(){
-        String serverURL = "http://api.futurebot.de/";
+        String serverURL = "http://api.kneipen-finder.de/";
         return serverURL;
     }
 
     public static String getServerURLForPictures(){
-        String serverURL = "http://www.futurebot.de/";
+        String serverURL = "http://www.kneipen-finder.de/";
         return serverURL;
     }
 
