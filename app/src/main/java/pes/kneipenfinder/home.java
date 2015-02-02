@@ -29,7 +29,13 @@ public class home extends Activity {
         // Hole die Geräte ID
         deviceID = helperMethods.getDeviceID(context);
         // Starte bei App Start die Kommunikation mit dem Server
-        serverCom = new serverCommunication(serverURL, context);
+        try {
+            serverCom = new serverCommunication(serverURL, context);
+        }catch (Exception e){
+            // Schließe App, wenn Kommunikation nicht erfolgreich war
+            helperMethods.closeApp();
+        }
+        // Erzeuge Location Objekt
         location = new location();
         // Erzeuge beim Start ein Properties Objekt
         prop = new AppProperties();
@@ -41,9 +47,7 @@ public class home extends Activity {
         if(!serverCom.initiateHandshake()) {
             eHandling = new errorHandling(context,"", "Es ist ein unerwarteter Fehler aufgetreten", "Handshake");
             // Nun muss sich die App schließen, da sichergestellt werden muss, dass der Anwender nichts mehr ausführt
-            finish();
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(0);
+            helperMethods.closeApp();
         }else{
             System.out.println("Handshake ok");
         }

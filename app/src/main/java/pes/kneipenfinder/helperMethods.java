@@ -43,4 +43,9 @@ public class helperMethods {
         String id = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
         return id;
     }
+
+    public static void closeApp(){
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(0);
+    }
 }
