@@ -3,6 +3,7 @@ package pes.kneipenfinder;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +38,11 @@ public class home extends Activity {
         }
         // Erzeuge Location Objekt
         location = new location();
+        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10f, location);
+
+        System.out.println(location.getLongitude());
+        System.out.println(location.getLatitude());
         // Erzeuge beim Start ein Properties Objekt
         prop = new AppProperties();
         // Wenn noch kein Properties-File existiert, erstelle eins mit den default Werten
