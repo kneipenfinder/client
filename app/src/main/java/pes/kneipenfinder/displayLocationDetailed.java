@@ -344,7 +344,7 @@ public class displayLocationDetailed extends Activity {
         ratingBar.setNumStars(5);
         ratingBar.setRating(Float.parseFloat(rating));
         tvAnzahlBewertungen = (TextView) findViewById(R.id.tvAnzahlBewertungen);
-        if(respond.getString("rating_amount") == "0"){
+        if(Integer.parseInt(respond.getString("rating_amount")) == 0){
             tvAnzahlBewertungen.setText("Keine Bewertungen");
         }else{
             tvAnzahlBewertungen.setText(respond.getString("rating_amount") + " " + "Bewertung(en)");
@@ -365,12 +365,17 @@ public class displayLocationDetailed extends Activity {
     // Setzt die Kommentare...
     public void setParentItems(JSONObject respond) throws JSONException {
         JSONArray comments = respond.getJSONArray("comments");
+        parentItems = null;
         for(int i = 0; i < comments.length(); i++){
             JSONObject comment = comments.getJSONObject(i);
             if(!comment.getString("Optional_Comment").equals("null")) {
                 parentItems.add(i, comment.getString("Optional_Comment"));
             }
             setChildItems(i ,comment.toString());
+        }
+
+        if(parentItems.isEmpty()){
+            parentItems.add(1, "Keine Kommentare abgegeben");
         }
     }
 

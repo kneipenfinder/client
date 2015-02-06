@@ -68,6 +68,7 @@ public class home extends Activity {
         startActivity(i);
     }
 
+    // Nicht mehr verwendet
     public void button_rateLocation(View v){
         // TODO Find for rate --> im Bestimmten umkreis (1km) suchen und zum bewerten anzeigen
         i = new Intent(getApplicationContext(), find.class);

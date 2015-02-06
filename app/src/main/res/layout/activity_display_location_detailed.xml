@@ -442,7 +442,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:text="Medium Text"
+                                android:text="Keine Bewertungen"
                                 android:id="@+id/tvAnzahlBewertungen" />
                         </TableRow>
 
