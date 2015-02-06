@@ -374,7 +374,7 @@ public class displayLocationDetailed extends Activity {
             setChildItems(i ,comment.toString());
         }
 
-        if(parentItems.isEmpty()){
+        if(parentItems == null){
             parentItems.add(1, "Keine Kommentare abgegeben");
         }
     }

@@ -46,7 +46,6 @@ public class displayResults {
                 HashMap<String, String> map = new HashMap<String, String>();
                 JSONArray locations = json.getJSONArray("locations");
                 for(int i = 0; i < locations.length(); i++){
-                    System.out.println(i);
                     JSONObject location = locations.getJSONObject(i);
                     map = new HashMap<String, String>();
                     map.put("LocationID", location.getString("id").trim());
