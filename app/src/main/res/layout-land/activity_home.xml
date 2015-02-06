@@ -7,27 +7,27 @@
     android:layout_height="fill_parent">
 
     <Button
-        style="@style/buttonStyle"
+        style="@style/buttonStyleLandscape"
         android:text="Finden"
         android:id="@+id/find"
         android:onClick="button_findLocation"
         android:layout_weight=".50"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_margin="@dimen/activity_vertical_margin" />
+        android:layout_margin="12dp" />
 
     <Button
-        style="@style/buttonStyle"
+        style="@style/buttonStyleLandscape"
         android:text="Suchen"
         android:id="@+id/search"
         android:layout_weight=".50"
         android:layout_width="fill_parent"
         android:onClick="button_searchLocation"
         android:layout_height="fill_parent"
-        android:layout_margin="@dimen/activity_vertical_margin" />
+        android:layout_margin="12dp" />
 
     <Button
-        style="@style/buttonStyle"
+        style="@style/buttonStyleLandscape"
         android:text="Hinzufügen"
         android:id="@+id/add"
         android:layout_weight=".50"
@@ -35,6 +35,6 @@
         android:onClick="button_addLocation"
         android:visibility="visible"
         android:layout_height="fill_parent"
-        android:layout_margin="@dimen/activity_vertical_margin" />
+        android:layout_margin="12dp" />
 
 </LinearLayout>

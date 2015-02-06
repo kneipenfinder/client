@@ -15,6 +15,16 @@
         <item name="android:paddingBottom">50dp</item>
     </style>
 
+    <style name="buttonStyleLandscape">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#FF37B5FF</item>
+        <item name="android:textColor">#fffffffb</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+    </style>
+
     <style name="buttonStyleNormal">
         <item name="android:layout_height">50dp</item>
         <item name="android:background">#FF37B5FF</item>
