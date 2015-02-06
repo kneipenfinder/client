@@ -2,12 +2,15 @@
     style="@style/backgroundStyle"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".home"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical">
 
         <Button
             style="@style/buttonStyle"
@@ -15,7 +18,8 @@
             android:id="@+id/add"
             android:layout_weight=".50"
             android:layout_width="0dp"
-            android:onClick="button_addLocation" />
+            android:onClick="button_addLocation"
+            android:visibility="visible" />
 
         <Button
             style="@style/buttonStyle"
@@ -23,14 +27,17 @@
             android:id="@+id/rate"
             android:layout_weight=".50"
             android:layout_width="0dp"
-            android:onClick="button_rateLocation" />
+            android:onClick="button_rateLocation"
+            android:clickable="false"
+            android:visibility="visible" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:visibility="visible">
 
         <Button
             style="@style/buttonStyle"

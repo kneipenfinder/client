@@ -8,7 +8,7 @@
     <style name="buttonStyle">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">#fff88202</item>
+        <item name="android:background">#FF37B5FF</item>
         <item name="android:textColor">#fffffffb</item>
         <item name="android:layout_margin">5dp</item>
         <item name="android:paddingTop">50dp</item>
@@ -17,7 +17,7 @@
 
     <style name="buttonStyleNormal">
         <item name="android:layout_height">50dp</item>
-        <item name="android:background">#fff88202</item>
+        <item name="android:background">#FF37B5FF</item>
         <item name="android:textColor">#fffffffb</item>
         <item name="android:layout_margin">5dp</item>
         <item name="android:paddingTop">50dp</item>
@@ -36,9 +36,16 @@
     </style>
 
     <style name="textStyle">
-        <item name="android:textColor">#fff88202</item>
+        <item name="android:textColor">#FF37B5FF</item>
         <item name="android:background">#ff3d3d3d</item>
         <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ScanStyle">
+        <item name="android:textColor">#FF37B5FF</item>
+        <item name="android:background">#ff3d3d3d</item>
+        <item name="android:gravity">left</item>
         <item name="android:textStyle">bold</item>
     </style>
 
