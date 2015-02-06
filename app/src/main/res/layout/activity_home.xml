@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".home"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <Button
-        style="@style/buttonStyle"
-        android:text="Finden"
+        style="@style/buttonStyleHome"
+        android:text="@string/homefinden"
         android:id="@+id/find"
         android:onClick="button_findLocation"
         android:layout_weight=".50"
@@ -17,8 +17,8 @@
         android:layout_margin="@dimen/activity_vertical_margin" />
 
     <Button
-        style="@style/buttonStyle"
-        android:text="Suchen"
+        style="@style/buttonStyleHome"
+        android:text="@string/homesuchen"
         android:id="@+id/search"
         android:layout_weight=".50"
         android:layout_width="fill_parent"
@@ -27,8 +27,8 @@
         android:layout_margin="@dimen/activity_vertical_margin" />
 
     <Button
-        style="@style/buttonStyle"
-        android:text="Hinzufügen"
+        style="@style/buttonStyleHome"
+        android:text="@string/homehinzufügen"
         android:id="@+id/add"
         android:layout_weight=".50"
         android:layout_width="fill_parent"

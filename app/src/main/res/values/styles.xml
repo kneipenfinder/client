@@ -23,6 +23,7 @@
         <item name="android:layout_margin">5dp</item>
         <item name="android:paddingTop">0dp</item>
         <item name="android:paddingBottom">0dp</item>
+        <item name="android:textSize">100dp</item>
     </style>
 
     <style name="buttonStyleNormal">
@@ -34,16 +35,26 @@
         <item name="android:paddingBottom">50dp</item>
     </style>
 
-    <style name="backgroundStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
-        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
-        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
-        <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
-        <item name="android:background">#ff3d3d3d</item>
-        <item name="android:clickable">false</item>
+    <style name="buttonStyleHome">
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">#FF37B5FF</item>
+        <item name="android:textColor">#fffffffb</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:paddingTop">50dp</item>
+        <item name="android:paddingBottom">50dp</item>
+        <item name="android:textSize">100dp</item>
     </style>
+
+    <style name="backgroundStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+    <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+    <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
+    <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
+    <item name="android:background">#ff3d3d3d</item>
+    <item name="android:clickable">false</item>
+</style>
 
     <style name="textStyle">
         <item name="android:textColor">#FF37B5FF</item>
