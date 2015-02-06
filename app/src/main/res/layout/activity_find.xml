@@ -3,12 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="pes.kneipenfinder.find" >
 
-    <TableLayout
+    <ListView
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/find_table"
-        android:layout_alignParentEnd="true"
-        style="@style/ScanStyle"></TableLayout>
+        android:layout_height="wrap_content"
+        android:id="@+id/listView" />
 </RelativeLayout>

@@ -49,4 +49,11 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="textStyleLeft">
+        <item name="android:textColor">#FF37B5FF</item>
+        <item name="android:background">#ff3d3d3d</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

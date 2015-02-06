@@ -14,6 +14,8 @@ public class find extends Activity {
     private errorHandling eHandling;
     Context context;
     private Intent i;
+    Double Lat = location.getLatitude();
+    Double Long = location.getLongitude();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +30,14 @@ public class find extends Activity {
     private void findLocation(Context context){
 
         this.context = context;
-        Double Lat = location.getLatitude();
-        Double Long = location.getLongitude();
+        AppProperties appProperties;
 
         JSONObject json = new JSONObject();
         try {
             json.put("action", "find");
-            json.put("lat", location.getLatitude());
-            json.put("long", location.getLongitude());
+            json.put("lat", Lat);
+            json.put("long", Long);
+            json.put("limit", home.prop.getProp("result", context));
         }catch(Exception e){
             // TODO Fehlerbehandlung
         }
