@@ -7,7 +7,7 @@
     android:layout_height="fill_parent">
 
     <Button
-        style="@style/buttonStyle"
+        style="@style/buttonStyleHome"
         android:text="Finden"
         android:id="@+id/find"
         android:onClick="button_findLocation"
@@ -17,7 +17,7 @@
         android:layout_margin="@dimen/activity_vertical_margin" />
 
     <Button
-        style="@style/buttonStyle"
+        style="@style/buttonStyleHome"
         android:text="Suchen"
         android:id="@+id/search"
         android:layout_weight=".50"
@@ -27,7 +27,7 @@
         android:layout_margin="@dimen/activity_vertical_margin" />
 
     <Button
-        style="@style/buttonStyle"
+        style="@style/buttonStyleHome"
         android:text="Hinzufügen"
         android:id="@+id/add"
         android:layout_weight=".50"
