@@ -39,10 +39,9 @@ public class home extends Activity {
         // Erzeuge Location Objekt
         location = new location();
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000,01, location);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000,1, location);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000,1, location);
 
-        System.out.println(location.getLongitude());
-        System.out.println(location.getLatitude());
         // Erzeuge beim Start ein Properties Objekt
         prop = new AppProperties();
         // Wenn noch kein Properties-File existiert, erstelle eins mit den default Werten
