@@ -13,18 +13,19 @@ public class location implements LocationListener {
     public static double longitude;
 
     public static double getLongitude(){
-        //return longitude;
-        return 6.941239;
+        return longitude;
+        //return 6.941239;
     }
 
     public static double getLatitude(){
-       // return latitude;
-        return 51.674967;
+        return latitude;
+        //return 51.674967;
     }
 
     @Override
     public void onLocationChanged(Location location)
     {
+        System.out.println("Location changed.");
         location.getLatitude();
         location.getLongitude();
         latitude=location.getLatitude();
@@ -34,16 +35,17 @@ public class location implements LocationListener {
     @Override
     public void onProviderDisabled(String provider)
     {
-        //print "Currently GPS is Disabled";
+        System.out.println("Currently GPS is disabled.");
     }
     @Override
     public void onProviderEnabled(String provider)
     {
-        //print "GPS got Enabled";
+        System.out.println("GPS enbaled.");
     }
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras)
     {
+        System.out.println("Status Changed.");
     }
 
 }
