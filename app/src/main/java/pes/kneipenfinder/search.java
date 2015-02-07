@@ -10,17 +10,11 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import pes.kneipenfinder.R;
 
 public class search extends Activity {
 
@@ -232,15 +226,16 @@ public class search extends Activity {
             JSONObject json = new JSONObject();
             try {
                 json.put("action", "search");
-                json.put("lat", location.getLatitude());
-                json.put("long", location.getLongitude());
                 json.put("type", type.getSelectedItem().toString());
                 json.put("name", name.getText().toString());
                 json.put("street", street.getText().toString());
                 json.put("postcode", postcode.getText().toString());
-
+                json.put("city", place.getText().toString());
+                json.put("limit", home.prop.getProp("result", context));
+                // Server Respond wieder aufnehemen
                 String respond = home.serverCom.secureCom(json.toString());
                 json = new JSONObject(respond);
+                // Respond an Display Results übergeben
                 displayResults results = new displayResults(respond, "Ergebnisse Suche", context);
 
             }catch(Exception e){
