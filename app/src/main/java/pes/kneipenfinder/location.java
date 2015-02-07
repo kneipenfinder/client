@@ -11,20 +11,20 @@ public class location implements LocationListener {
 
     public static double latitude;
     public static double longitude;
+    public static boolean locationActive = false;
 
     public static double getLongitude(){
         return longitude;
-        //return 6.941239;
     }
 
     public static double getLatitude(){
         return latitude;
-        //return 51.674967;
     }
 
     @Override
     public void onLocationChanged(Location location)
     {
+        locationActive = true;
         System.out.println("Location changed.");
         location.getLatitude();
         location.getLongitude();
@@ -36,6 +36,7 @@ public class location implements LocationListener {
     public void onProviderDisabled(String provider)
     {
         System.out.println("Currently GPS is disabled.");
+        locationActive = false;
     }
     @Override
     public void onProviderEnabled(String provider)

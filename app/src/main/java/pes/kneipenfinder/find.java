@@ -20,8 +20,12 @@ public class find extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find);
-        findLocation(this);
+        if(!location.locationActive) {
+            // To-Do falls standort nicht lokalisiert nix tun und u home returnen
+        }else {
+            setContentView(R.layout.activity_find);
+            findLocation(this);
+        }
         // TODO: Hier auch noch aufnehemen aus welcher Activity man kommt
         // TODO: Wenn aus rate, dann muss bei click auf Location rateSingleLocation aufgerufen werden
         // TODO: Ansonsten Display Single Locatioon
