@@ -75,6 +75,7 @@ public class displayResults {
             }
         }catch(Exception e){
             // TODO Fehlerbehandlung
+            System.out.println(e.toString());
         }
     }
 }
