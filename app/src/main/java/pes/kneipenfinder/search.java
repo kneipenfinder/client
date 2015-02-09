@@ -312,7 +312,6 @@ public class search extends Activity {
                 // Home
                 setContentView(R.layout.activity_home);
                 break;
-
             case R.id.action_settings:
                 // Einstellungen
                 i = new Intent(getApplicationContext(), settings.class);

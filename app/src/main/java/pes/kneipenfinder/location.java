@@ -24,12 +24,12 @@ public class location implements LocationListener {
     @Override
     public void onLocationChanged(Location location)
     {
-        locationActive = true;
-        System.out.println("Location changed.");
-        location.getLatitude();
-        location.getLongitude();
-        latitude=location.getLatitude();
-        longitude=location.getLongitude();
+            locationActive = true;
+            System.out.println("Location changed.");
+            location.getLatitude();
+            location.getLongitude();
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
     }
 
     @Override

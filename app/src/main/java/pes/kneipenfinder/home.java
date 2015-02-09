@@ -101,6 +101,11 @@ public class home extends Activity {
                 i = new Intent(getApplicationContext(), impressum.class);
                 startActivity(i);
                 break;
+            case R.id.action_socialmedia:
+                // Social Media
+                i = new Intent(getApplicationContext(), socialMedia.class);
+                startActivity(i);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
