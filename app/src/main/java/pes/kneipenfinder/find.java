@@ -21,14 +21,13 @@ public class find extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(!location.locationActive) {
-            // To-Do falls standort nicht lokalisiert nix tun und u home returnen
+            Intent i = new Intent(getApplicationContext(), background.class);
+            startActivity(i);
+            finish();
         }else {
             setContentView(R.layout.activity_find);
             findLocation(this);
         }
-        // TODO: Hier auch noch aufnehemen aus welcher Activity man kommt
-        // TODO: Wenn aus rate, dann muss bei click auf Location rateSingleLocation aufgerufen werden
-        // TODO: Ansonsten Display Single Locatioon
     }
 
     private void findLocation(Context context){

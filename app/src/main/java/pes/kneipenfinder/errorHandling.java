@@ -48,14 +48,13 @@ public class errorHandling {
         }
         builder1.setTitle(title);
         builder1.setMessage("Es ist ein Fehler aufgetreten: " + message);
-        builder1.setCancelable(true);
         builder1.setPositiveButton("OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
                 });
-
+        builder1.setCancelable(false);
         AlertDialog alert11 = builder1.create();
         alert11.show();
     }
@@ -67,14 +66,13 @@ public class errorHandling {
             builder1.setTitle(title);
         }
         builder1.setMessage("Es ist ein Fehler aufgetreten: " + message + " ( " + errorcode + " ) ");
-        builder1.setCancelable(true);
         builder1.setPositiveButton("OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
                 });
-
+        builder1.setCancelable(false);
         AlertDialog alert11 = builder1.create();
         alert11.show();
     }

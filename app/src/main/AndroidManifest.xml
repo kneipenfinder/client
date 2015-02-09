@@ -56,6 +56,10 @@
             android:name=".displayLocationDetailed"
             android:label="@string/title_activity_display_location_detailed" >
         </activity>
+        <activity
+            android:name=".background"
+            android:label="@string/title_activity_background" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

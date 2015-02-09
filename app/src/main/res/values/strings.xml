@@ -39,5 +39,6 @@
     <string name="homefinden">Finden</string>
     <string name="homesuchen">Suchen</string>
     <string name="homehinzufügen">Hinzufügen</string>
+    <string name="title_activity_background">background</string>
 
 </resources>
