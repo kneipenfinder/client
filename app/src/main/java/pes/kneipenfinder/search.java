@@ -234,9 +234,9 @@ public class search extends Activity {
                 json.put("limit", home.prop.getProp("result", context));
                 // Server Respond wieder aufnehemen
                 String respond = home.serverCom.secureCom(json.toString());
+                setContentView(R.layout.activity_find);
                 // Respond an Display Results übergeben
                 displayResults results = new displayResults(respond, "Ergebnisse Suche", context);
-
             }catch(Exception e){
                 // TODO Fehlerbehandlung
             }
