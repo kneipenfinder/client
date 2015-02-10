@@ -67,8 +67,8 @@
                             </TableRow>
 
                             <TableRow
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent">
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -82,26 +82,23 @@
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:text="Medium Text"
-                                    android:id="@+id/tvOrt"
-                                    android:layout_span="2"
-                                    android:layout_gravity="left"
-                                    android:gravity="left" />
+                                    android:id="@+id/tvOrt" />
                             </TableRow>
 
                             <TableRow
-                                android:layout_width="wrap_content"
+                                android:layout_width="fill_parent"
                                 android:layout_height="fill_parent">
 
                                 <Button
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
                                     android:text="Navigieren"
                                     android:id="@+id/button_maps"
                                     android:layout_span="3" />
                             </TableRow>
 
                             <TableRow
-                                android:layout_width="wrap_content"
+                                android:layout_width="fill_parent"
                                 android:layout_height="fill_parent">
 
                                 <Button
@@ -415,11 +412,11 @@
                                 android:layout_height="fill_parent">
 
                                 <Button
-                                    style="?android:attr/buttonStyleSmall"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
                                     android:text="@string/button_Bewerten"
                                     android:id="@+id/button_rate"
+                                    android:layout_span="3"
                                     android:longClickable="false" />
                             </TableRow>
 

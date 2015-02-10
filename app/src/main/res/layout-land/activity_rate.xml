@@ -11,15 +11,14 @@
         android:weightSum="1">
 
         <Button
-            style="@style/buttonStyleNormal"
+            style="@style/buttonStyleLandscape"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Bewerten"
             android:id="@+id/rate"
             android:layout_gravity="bottom"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_centerHorizontal="true" />
 
         <TableLayout
             android:layout_width="wrap_content"
@@ -53,14 +52,12 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
 
-                <TextView
-                    style="@style/textStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="@string/rate_comment_headline"
-                    android:id="@+id/textView2"
-                    android:editable="true" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
             </TableRow>
 
             <TableRow
@@ -95,8 +92,9 @@
             android:text="@string/rate_stars_headline"
             android:id="@+id/textView"
             android:editable="true"
-            android:layout_alignTop="@+id/tableLayout2"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@+id/tableLayout2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <RatingBar
             android:layout_width="wrap_content"
@@ -112,8 +110,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/editText_Comment"
             android:layout_below="@+id/textView3"
-            android:layout_alignLeft="@+id/rate"
-            android:layout_alignStart="@+id/rate" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             style="@style/textStyle"
@@ -123,7 +121,8 @@
             android:text="@string/rate_comment_headline"
             android:id="@+id/textView3"
             android:editable="true"
-            android:layout_below="@+id/ratingBar"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
     </RelativeLayout>
 </ScrollView>

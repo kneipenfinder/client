@@ -12,19 +12,18 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="442dp">
+            android:layout_height="287dp">
 
             <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
                 <Button
-                    style="@style/buttonStyleNormal"
+                    style="@style/buttonStyleLandscape"
                     android:layout_width="fill_parent"
                     android:text="Facebook"
                     android:id="@+id/facebook"
-                    android:onClick="button_openFacebook"
-                    android:layout_height="wrap_content" />
+                    android:onClick="button_openFacebook" />
             </TableRow>
 
             <TableRow
@@ -32,12 +31,11 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    style="@style/buttonStyleNormal"
+                    style="@style/buttonStyleLandscape"
                     android:layout_width="fill_parent"
                     android:text="Twitter"
                     android:id="@+id/twitter"
-                    android:onClick="button_openTwitter"
-                    android:layout_height="wrap_content" />
+                    android:onClick="button_openTwitter" />
             </TableRow>
 
             <TableRow
@@ -45,12 +43,11 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    style="@style/buttonStyleNormal"
+                    style="@style/buttonStyleLandscape"
                     android:layout_width="fill_parent"
                     android:text="Google+"
                     android:id="@+id/google"
-                    android:onClick="button_openGoogle"
-                    android:layout_height="wrap_content" />
+                    android:onClick="button_openGoogle" />
             </TableRow>
 
             <TableRow

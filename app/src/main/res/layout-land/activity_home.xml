@@ -1,40 +1,46 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/backgroundStyle"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".home"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
-    <Button
-        style="@style/buttonStyleLandscape"
-        android:text="Finden"
-        android:id="@+id/find"
-        android:onClick="button_findLocation"
-        android:layout_weight=".50"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/backgroundStyle"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".home"
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_margin="12dp" />
+        android:layout_height="wrap_content">
 
-    <Button
-        style="@style/buttonStyleLandscape"
-        android:text="Suchen"
-        android:id="@+id/search"
-        android:layout_weight=".50"
-        android:layout_width="fill_parent"
-        android:onClick="button_searchLocation"
-        android:layout_height="fill_parent"
-        android:layout_margin="12dp" />
+        <Button
+            style="@style/buttonStyleLandscape"
+            android:text="Finden"
+            android:id="@+id/find"
+            android:onClick="button_findLocation"
+            android:layout_weight=".50"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="12dp" />
 
-    <Button
-        style="@style/buttonStyleLandscape"
-        android:text="Hinzufügen"
-        android:id="@+id/add"
-        android:layout_weight=".50"
-        android:layout_width="fill_parent"
-        android:onClick="button_addLocation"
-        android:visibility="visible"
-        android:layout_height="fill_parent"
-        android:layout_margin="12dp" />
+        <Button
+            style="@style/buttonStyleLandscape"
+            android:text="Suchen"
+            android:id="@+id/search"
+            android:layout_weight=".50"
+            android:layout_width="fill_parent"
+            android:onClick="button_searchLocation"
+            android:layout_height="fill_parent"
+            android:layout_margin="12dp" />
 
-</LinearLayout>
+        <Button
+            style="@style/buttonStyleLandscape"
+            android:text="Hinzufügen"
+            android:id="@+id/add"
+            android:layout_weight=".50"
+            android:layout_width="fill_parent"
+            android:onClick="button_addLocation"
+            android:visibility="visible"
+            android:layout_height="fill_parent"
+            android:layout_margin="12dp" />
+
+    </LinearLayout>
+</ScrollView>

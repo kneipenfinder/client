@@ -1,110 +1,116 @@
-<TableLayout
-    style="@style/backgroundStyle"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <TextView
-        style="@style/textStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/search_headline"
-        android:id="@+id/textView4" />
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/location_spinner" />
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <TextView
-            style="@style/textStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name:"
-            android:id="@+id/textView"
-            android:singleLine="false" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/searchName"
-            android:layout_column="2"
-            android:hint="Name eingeben"
-            android:singleLine="false" />
-
-    </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <TextView
-            style="@style/textStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Straße:"
-            android:id="@+id/textView2"
-            android:singleLine="false" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/searchStreet"
-            android:layout_column="2"
-            android:hint="Straße eingeben" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <TextView
-            style="@style/textStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Postleitzahl:"
-            android:id="@+id/textView3" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/searchPostcode"
-            android:layout_column="2"
-            android:hint="Postleitzahl eingeben" />
-    </TableRow>
-
-    <TableRow
+    android:fillViewport="true"
+    >
+    <TableLayout
+        style="@style/backgroundStyle"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/tableRow2">
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
         <TextView
             style="@style/textStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ort:"
-            android:id="@+id/textView5" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/search_headline"
+            android:id="@+id/textView4" />
 
-        <EditText
+        <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/searchPlace"
-            android:layout_column="2"
-            android:hint="Ort eingeben" />
-    </TableRow>
+            android:id="@+id/location_spinner" />
 
-    <Button
-        style="@style/buttonStyleNormal"
-        android:layout_width="wrap_content"
-        android:text="Suchen"
-        android:id="@+id/search"
-        android:onClick="button_searchLocation"
-        android:textColor="#ffffffff"
-        android:layout_height="wrap_content" />
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-</TableLayout>
+            <TextView
+                style="@style/textStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name:"
+                android:id="@+id/textView"
+                android:singleLine="false" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchName"
+                android:layout_column="2"
+                android:hint="Name eingeben"
+                android:singleLine="false" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                style="@style/textStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Straße:"
+                android:id="@+id/textView2"
+                android:singleLine="false" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchStreet"
+                android:layout_column="2"
+                android:hint="Straße eingeben" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                style="@style/textStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Postleitzahl:"
+                android:id="@+id/textView3" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchPostcode"
+                android:layout_column="2"
+                android:hint="Postleitzahl eingeben" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/tableRow2">
+
+            <TextView
+                style="@style/textStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ort:"
+                android:id="@+id/textView5" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchPlace"
+                android:layout_column="2"
+                android:hint="Ort eingeben" />
+        </TableRow>
+
+        <Button
+            style="@style/buttonStyleNormal"
+            android:layout_width="wrap_content"
+            android:text="Suchen"
+            android:id="@+id/search"
+            android:onClick="button_searchLocation"
+            android:textColor="#ffffffff"
+            android:layout_height="wrap_content" />
+
+    </TableLayout>
+</ScrollView>
