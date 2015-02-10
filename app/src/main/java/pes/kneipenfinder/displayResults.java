@@ -49,7 +49,7 @@ public class displayResults {
                     JSONObject location = locations.getJSONObject(i);
                     map = new HashMap<String, String>();
                     map.put("LocationID", location.getString("id").trim());
-                    map.put("name", location.getString("name").trim() + lineSep + location.getString("street").trim());
+                    map.put("name", location.getString("name").trim() + lineSep + location.getString("postcode").trim() + " " + location.getString("city").trim() + ", " + location.getString("street").trim());
                     map.put("distance", location.getString("distance").trim() + lineSep + "KM");
                     map.put("orientation", location.getString("orientation").trim());
                     mylist.add(map);
