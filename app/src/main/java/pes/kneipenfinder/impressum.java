@@ -19,8 +19,7 @@ public class impressum extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TextView impressum = (TextView) findViewById(R.id.impress);
-        impressum.setText(getString(R.string.impressum_text));
+        setContentView(R.layout.activity_impressum);
     }
 
     // Mail an App-Authoren

@@ -111,7 +111,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editText_Comment"
-            android:layout_below="@+id/textView3"
+            android:layout_below="@+id/imprint_text"
             android:layout_alignLeft="@+id/rate"
             android:layout_alignStart="@+id/rate" />
 
@@ -121,7 +121,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/rate_comment_headline"
-            android:id="@+id/textView3"
+            android:id="@+id/imprint_text"
             android:editable="true"
             android:layout_below="@+id/ratingBar"
             android:layout_centerHorizontal="true" />

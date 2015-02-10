@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">KneipenFinder</string>
-    <string name="action_settings">Einstellungen</string>
+    <string name="action_settings">Einstellungen ansehen/ändern:</string>
     <string name="title_activity_settings">Einstellungen</string>
     <string name="title_activity_find">Umkreissuche</string>
     <string name="tv_label_radius">Radius eingeben</string>
@@ -17,14 +17,14 @@
     <string name="title_activity_display_results">displayResults</string>
     <string name="title_activity_impressum">Impressum</string>
     <string name="title_activity_search">Suche</string>
-    <string name="add_headline">Location hinzufügen</string>
-    <string name="rate_stars_headline">Bewertung</string>
+    <string name="add_headline">Bitte Daten eingeben:</string>
+    <string name="rate_stars_headline">Bitte Bewertung eingeben:</string>
     <string name="rate_comment_headline">Kommentar</string>
-    <string name="search_headline">Location suchen</string>
-    <string name="impressum_text">Verantwortlich für den Inhalt:
-        Peter Sieverding | Leif Ruppenthal | Marcel Köllmann</string>
-    <string name="mailto">Mail an Author</string>
-    <string name="title_activity_social_media">socialMedia</string>
+    <string name="search_headline">Bitte Suchkriterien eingeben:</string>
+    <string name="impressum_headline">Impressum</string>
+    <string name="impressum_text">Verantwortlich für den Inhalt:\n• Peter Sieverding\n• Leif Ruppenthal\n• Marcel Köllmann</string>
+    <string name="mailto">E-Mail schreiben</string>
+    <string name="title_activity_social_media">Social Media</string>
     <string name="hello_world">Hello world!</string>
     <string name="social_media_text">Hier unsere Social Media Auftritte</string>
     <string name="title_activity_display_location_detailed">Placeholder</string>
@@ -32,7 +32,7 @@
     <string name="Tabcontrol2">Öffnungszeiten</string>
     <string name="Tabcontrol3">Fotos</string>
     <string name="Tabcontrol4">Bewertungen</string>
-    <string name="button_Bewerten">Bewerten</string>
+    <string name="button_Bewerten">Bewertung hinzufügen</string>
     <string name="tv_Bewerten">Bewertung</string>
     <string name="tv_Kommentare">Kommentare</string>
     <string name="tv_Label_Comment">Kommentar eingeben</string>

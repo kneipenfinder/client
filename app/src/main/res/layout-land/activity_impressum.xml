@@ -9,7 +9,7 @@
         tools:context="pes.kneipenfinder.impressum">
 
         <Button
-            style="@style/buttonStyleNormal"
+            style="@style/buttonStyleLandscape"
             android:layout_width="fill_parent"
             android:text="@string/mailto"
             android:id="@+id/mailto"

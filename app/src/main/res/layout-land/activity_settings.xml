@@ -20,29 +20,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Einstellungen"
-                android:id="@+id/textView2" />
+                android:id="@+id/textView2"
+                android:text="@string/action_settings"
+                android:autoText="false" />
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="439dp"
-            android:id="@+id/layout_hor">
+            android:layout_height="218dp"
+            android:id="@+id/layout_hor"
+            android:gravity="bottom">
 
             <TextView
                 style="@style/textStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Radius"
-                android:id="@+id/textView" />
+                android:text="Suchradius"
+                android:id="@+id/textView"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="0dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp" />
 
             <EditText
                 android:id="@+id/editTextRadius"
                 android:layout_width="match_parent"
                 android:inputType="text"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="0dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="33dp">
 
             </EditText>
 
@@ -52,17 +62,25 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Anzahl der angezeigten Ergebnisse"
-                android:id="@+id/textView3" />
+                android:id="@+id/imprint_text"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="0dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="106dp" />
 
             <EditText
                 android:id="@+id/editTextResults"
                 android:layout_width="match_parent"
                 android:inputType="text"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="0dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="139dp">
 
             </EditText>
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 </ScrollView>
