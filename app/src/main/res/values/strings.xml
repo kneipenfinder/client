@@ -35,11 +35,12 @@
     <string name="Tabcontrol4">Bewertungen</string>
     <string name="button_Bewerten">Bewertung hinzufügen</string>
     <string name="tv_Bewerten">Bewertung</string>
-    <string name="tv_Kommentare">Kommentare</string>
+    <string name="tv_Kommentare">Kommentare:</string>
     <string name="tv_Label_Comment">Kommentar eingeben</string>
     <string name="homefinden">Finden</string>
     <string name="homesuchen">Suchen</string>
     <string name="homehinzufügen">Hinzufügen</string>
     <string name="title_activity_background">background</string>
+    <string name="Donnerstag">Donnerstag: \</string>
 
 </resources>
