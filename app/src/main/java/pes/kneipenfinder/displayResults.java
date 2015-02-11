@@ -13,7 +13,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -50,10 +52,19 @@ public class displayResults {
                     map = new HashMap<String, String>();
                     map.put("LocationID", location.getString("id").trim());
                     map.put("name", location.getString("name").trim() + lineSep + location.getString("postcode").trim() + " " + location.getString("city").trim() + ", " + location.getString("street").trim());
-                    map.put("distance", location.getString("distance").trim() + lineSep + "KM");
-                    map.put("orientation", location.getString("orientation").trim());
+                    Iterator<String> it = location.keys();
+                    while(it.hasNext())
+                    {
+                        String value=(String) it.next();
+                        if(value == "distance"){
+                            map.put("distance", location.getString("distance").trim() + lineSep + "KM");
+                        }
+                        if(value == "orientation"){
+                            map.put("orientation", location.getString("orientation").trim());
+                        }
+                    }
                     mylist.add(map);
-                    };
+                };
                 SimpleAdapter mSchedule = new SimpleAdapter(context, mylist, R.layout.row,
                         new String[] {"name", "distance", "orientation"}, new int[] {R.id.name, R.id.distance, R.id.orientation});
                 listView.setAdapter(mSchedule);
