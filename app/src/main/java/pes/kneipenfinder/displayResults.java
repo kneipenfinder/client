@@ -56,10 +56,10 @@ public class displayResults {
                     while(it.hasNext())
                     {
                         String value=(String) it.next();
-                        if(value == "distance"){
+                        if(value.equals("distance")){
                             map.put("distance", location.getString("distance").trim() + lineSep + "KM");
                         }
-                        if(value == "orientation"){
+                        if(value.equals("orientation")){
                             map.put("orientation", location.getString("orientation").trim());
                         }
                     }
