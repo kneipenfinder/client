@@ -37,11 +37,17 @@ public class home extends Activity {
             helperMethods.closeApp();
         }
         // Erzeuge Location Objekt
-        location = new location();
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000,1, location);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000,1, location);
 
+        try {
+            location = new location();
+            LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, location);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 1, location);
+        }catch (Exception e){
+
+            //To-Do Fehler Handling
+
+        }
         // Erzeuge beim Start ein Properties Objekt
         prop = new AppProperties();
         // Wenn noch kein Properties-File existiert, erstelle eins mit den default Werten
