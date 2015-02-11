@@ -26,7 +26,9 @@
                 <TabWidget
                     android:id="@android:id/tabs"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"></TabWidget>
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:showDividers="middle"></TabWidget>
 
                 <FrameLayout
                     android:id="@android:id/tabcontent"
@@ -79,14 +81,14 @@
                                     android:id="@+id/tvPLZ" />
 
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:text="Medium Text"
                                     android:id="@+id/tvOrt"
-                                    android:layout_span="2"
                                     android:layout_gravity="left"
-                                    android:gravity="left" />
+                                    android:gravity="left"
+                                    android:layout_column="2" />
                             </TableRow>
 
                             <TableRow
@@ -99,29 +101,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="fill_parent">
 
-                                <Button
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Facebook"
-                                    android:id="@+id/button_facebook"
-                                    android:singleLine="false"
-                                    android:visibility="invisible" />
-
-                                <Button
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="twitter"
-                                    android:id="@+id/button_twitter"
-                                    android:singleLine="false"
-                                    android:visibility="invisible" />
-
-                                <Button
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Google+"
-                                    android:id="@+id/button_google"
-                                    android:singleLine="false"
-                                    android:visibility="invisible" />
                             </TableRow>
 
                             <Button
@@ -130,7 +109,34 @@
                                 android:text="Navigieren"
                                 android:id="@+id/button_maps"
                                 android:layout_span="3"
-                                style="@style/buttonStyle" />
+                                style="@style/buttonStyleThin" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Facebook"
+                                android:id="@+id/button_facebook"
+                                android:singleLine="false"
+                                style="@style/buttonStyleThin"
+                                android:enabled="false" />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Twitter"
+                                android:id="@+id/button_twitter"
+                                android:singleLine="false"
+                                style="@style/buttonStyleThin"
+                                 />
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Google+"
+                                android:id="@+id/button_google"
+                                android:singleLine="false"
+                                style="@style/buttonStyleThin"
+                                 />
 
                         </TableLayout>
                     </LinearLayout>
@@ -441,7 +447,7 @@
                                 android:layout_height="fill_parent">
 
                                 <Button
-                                    style="@style/buttonStyle"
+                                    style="@style/buttonStyleThin"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/button_Bewerten"

@@ -104,7 +104,7 @@
         </TableRow>
 
         <Button
-            style="@style/buttonStyleNormal"
+            style="@style/buttonStyleThin"
             android:layout_width="wrap_content"
             android:text="Suchen"
             android:id="@+id/search"

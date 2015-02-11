@@ -69,15 +69,17 @@ public class displayLocationDetailed extends Activity {
 
         context = this;
         Activity activity = (Activity) context;
-        // Überschrift setzen
-        activity.getActionBar().setTitle("Hier muss der Kneipenname stehen.");
 
         // Die übergebene LocationID wieder aufnehmen und in eine Variable speichern
         Bundle b = getIntent().getExtras();
         currLocationID = b.getInt("LocationID");
+        // Überschrift setzen
+        activity.getActionBar().setTitle(b.getString("name"));
+
 
         // Location Details aus der DB holen
         getLocationDetails();
+
     }
 
     // Hole sämtliche Location Informationen aus der Datenbank

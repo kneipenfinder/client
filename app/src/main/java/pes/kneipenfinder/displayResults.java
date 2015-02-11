@@ -67,7 +67,9 @@ public class displayResults {
                         Bundle bundle = new Bundle();
                         Map value = mylist.get(position);
                         String lid = value.get("LocationID").toString();
+                        String lname = value.get("name").toString();
                         bundle.putInt("LocationID", Integer.parseInt(lid));
+                        bundle.putString("name", lname);
                         i.putExtras(bundle);
                         context.startActivity(i);
                     }
