@@ -232,6 +232,10 @@ public class search extends Activity {
                 json.put("postcode", postcode.getText().toString());
                 json.put("city", place.getText().toString());
                 json.put("limit", home.prop.getProp("result", context));
+                if(location.locationActive){
+                    json.put("lat", location.getLatitude());
+                    json.put("long", location.getLongitude());
+                }
                 // Server Respond wieder aufnehemen
                 String respond = home.serverCom.secureCom(json.toString());
                 setContentView(R.layout.activity_find);
