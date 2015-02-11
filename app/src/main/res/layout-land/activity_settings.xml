@@ -21,7 +21,7 @@
                 android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/textView2"
-                android:text="@string/action_settings"
+                android:text="@string/headline_activity_settings"
                 android:autoText="false" />
         </LinearLayout>
 

@@ -2,8 +2,9 @@
 <resources>
 
     <string name="app_name">KneipenFinder</string>
-    <string name="action_settings">Einstellungen ansehen/ändern:</string>
+    <string name="action_settings">Einstellungen</string>
     <string name="title_activity_settings">Einstellungen</string>
+    <string name="headline_activity_settings">Einstellungen ansehen/ändern:</string>
     <string name="title_activity_find">Umkreissuche</string>
     <string name="tv_label_radius">Radius eingeben</string>
     <string name="tv_label_results">Anzahl der gewünschten Ergebnisse eingeben</string>

@@ -130,7 +130,7 @@
                                 android:text="Navigieren"
                                 android:id="@+id/button_maps"
                                 android:layout_span="3"
-                                style="@style/buttonStyle" />
+                                style="@style/buttonStyleLandscape" />
 
                         </TableLayout>
                     </LinearLayout>
@@ -441,7 +441,7 @@
                                 android:layout_height="fill_parent">
 
                                 <Button
-                                    style="@style/buttonStyle"
+                                    style="@style/buttonStyleLandscape"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/button_Bewerten"
