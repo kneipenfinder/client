@@ -11,8 +11,10 @@
         tools:context="pes.kneipenfinder.background">
 
         <TableLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center">
 
             <TableRow
                 android:layout_width="fill_parent"
@@ -25,7 +27,8 @@
                     android:text="GPS Signal nicht aktiviert"
                     android:id="@+id/textView"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal" />
             </TableRow>
 
             <TableRow
