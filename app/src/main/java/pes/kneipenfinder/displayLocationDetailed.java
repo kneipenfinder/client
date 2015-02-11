@@ -346,12 +346,14 @@ public class displayLocationDetailed extends Activity {
         ratingBar.setNumStars(5);
         ratingBar.setRating(Float.parseFloat(rating));
         tvAnzahlBewertungen = (TextView) findViewById(R.id.tvAnzahlBewertungen);
-        if(Integer.parseInt(respond.getString("rating_amount")) == 0){
-            tvAnzahlBewertungen.setText("Keine Bewertungen");
-        }else{
+        if(Integer.parseInt(respond.getString("rating_amount")) != 0){
             tvAnzahlBewertungen.setText(respond.getString("rating_amount") + " " + "Bewertung(en)");
         }
-        setListView(respond);
+        try {
+            setListView(respond);
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 
     // Befüllt die List View mit den Kommentaren zu der Location aus der DB
@@ -367,13 +369,12 @@ public class displayLocationDetailed extends Activity {
     // Setzt die Kommentare...
     public void setParentItems(JSONObject respond) throws JSONException {
         JSONArray comments = respond.getJSONArray("comments");
-        parentItems = null;
         for(int i = 0; i < comments.length(); i++){
             JSONObject comment = comments.getJSONObject(i);
-            if(!comment.getString("Optional_Comment").equals("null")) {
-                parentItems.add(i, comment.getString("Optional_Comment"));
+            String commentString = comment.getString("Optional_Comment");
+            if(!comments.equals("null")) {
+                parentItems.add(i, commentString);
             }
-            setChildItems(i ,comment.toString());
         }
 
         if(parentItems == null){
