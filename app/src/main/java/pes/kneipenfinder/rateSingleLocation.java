@@ -28,6 +28,7 @@ public class rateSingleLocation extends Activity {
     private Button buttonRate;
     private TextView tvLocationName;
     private errorHandling eHandling;
+    private JSONObject json;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +49,10 @@ public class rateSingleLocation extends Activity {
             public void onClick(View v) {
                 if(ratingBar.getRating() != 0){
                     try {
-                        JSONObject json = new JSONObject();
-                        setJSON(json);
+                        json = new JSONObject();
+                        setJSON();
                         // Respond aufnehmen
+                        System.out.println(json);
                         String respond = home.serverCom.secureCom(json.toString());
                         System.out.println(respond);
                         JSONObject jsonObject;
@@ -60,7 +62,7 @@ public class rateSingleLocation extends Activity {
                             finish();
                             messageDialog msg = new messageDialog(context, "Erfolgreich abgestimmt", "Die Location wurde bewertet.");
                         }else{
-                            eHandling = new errorHandling(context,"Fehler bei Abgabe der Bewertung", "Es ist ein unerwarteter Fehler aufgetreten", "rate");
+                            eHandling = new errorHandling(context,"Fehler bei Abgabe der Bewertung", "Die Location wurde schon bewertet.", "rate");
                         }
                     } catch (Exception e){
                         eHandling = new errorHandling(context,"Fehler bei Abgabe der Bewertung", "Es ist ein unerwarteter Fehler aufgetreten", "rate");
@@ -119,12 +121,14 @@ public class rateSingleLocation extends Activity {
         });
     }
 
-    public void setJSON(JSONObject json){
+    public void setJSON(){
         try {
             json.put("action", "rateLocation");
             json.put("LocationID", currLocationID);
             json.put("Rating", ratingBar.getRating());
-            json.put("Comment", Kommentar.getText().toString());
+            if(!Kommentar.getText().equals("")) {
+                json.put("Comment", Kommentar.getText().toString());
+            }
         } catch (Exception e){
             // TODO Fehlerhandling
             System.out.println(e);
