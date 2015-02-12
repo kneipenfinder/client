@@ -36,6 +36,7 @@
                 android:singleLine="false" />
 
             <EditText
+                style="@style/editTextStyleLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/addName"
@@ -57,6 +58,7 @@
                 android:singleLine="false" />
 
             <EditText
+                style="@style/editTextStyleLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/addStreet"
@@ -76,6 +78,7 @@
                 android:id="@+id/imprint_text" />
 
             <EditText
+                style="@style/editTextStyleLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/addPostcode"
@@ -96,6 +99,7 @@
                 android:id="@+id/textView5" />
 
             <EditText
+                style="@style/editTextStyleLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/addplace"
